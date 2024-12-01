@@ -1,28 +1,47 @@
-# PROGRAMA
-    PROG = ajustePol gera_entrada
+# Programas
+PROGS = ajustePol gera_entrada
 
-# Compilador
-    CC     = gcc
-    CFLAGS = 
-    LFLAGS = -lm
+# Compilador e flags
+CC     = gcc
+CFLAGS = -Wall -g -O3 -mavx -march=native
+LFLAGS = -lm -llikwid
 
-# Lista de arquivos para distribuição.
-# LEMBRE-SE DE ACRESCENTAR OS ARQUIVOS ADICIONAIS SOLICITADOS NO ENUNCIADO DO TRABALHO
-DISTFILES = *.c *.h LEIAME* Makefile 
-DISTDIR = `basename ${PWD}`
+# Objetos
+OBJ_AJUSTE = ajustePol.o utils.o
+OBJ_GERA = gera_entrada.o utils.o
 
-.PHONY: all clean purge dist
+all: $(PROGS)
 
+# Regras para ajustePol
+ajustePol: $(OBJ_AJUSTE)
+	$(CC) -o $@ $^ $(LFLAGS)
+
+ajustePol.o: ajustePol.c utils.h
+	$(CC) -c $< $(CFLAGS)
+
+# Regras para gera_entrada
+gera_entrada: $(OBJ_GERA)
+	$(CC) -o $@ $^ $(LFLAGS)
+
+gera_entrada.o: gera_entrada.c
+	$(CC) -c $< $(CFLAGS)
+
+# Regra para utils.c
+utils.o: utils.c utils.h
+	$(CC) -c $< $(CFLAGS)
+
+# Limpeza
 clean:
-	@echo "Limpando sujeira ..."
-	@rm -f *~ *.bak core 
+	@echo "Limpando arquivos objetos e executáveis..."
+	@rm -f *.o $(PROGS)
 
-purge:  clean
-	@echo "Limpando tudo ..."
-	@rm -f $(PROG) *.o a.out $(DISTDIR) $(DISTDIR).tar
+purge: clean
+	@echo "Limpando arquivos adicionais..."
+	@rm -f *~ *.bak core
 
 dist: purge
-	@echo "Gerando arquivo de distribuição ($(DISTDIR).tar) ..."
+	@echo "Gerando arquivo de distribuição ($(DISTDIR).tar)..."
 	@ln -s . $(DISTDIR)
 	@tar -cvf $(DISTDIR).tar $(addprefix ./$(DISTDIR)/, $(DISTFILES))
 	@rm -f $(DISTDIR)
+
