@@ -5,6 +5,7 @@
 #include <math.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <likwid.h>
 
 #include "utils.h"
 
