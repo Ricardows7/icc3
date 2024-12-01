@@ -71,10 +71,7 @@ void montaSL_V2(double ** restrict A, double * restrict b, int n, long long int 
 
 	for (int i = 0; i < n-n%4; i += 4){
 		zera_vetor (b, i);
-		A[i][0] = 0.0;
-		A[i+1][0] = 0.0;
-		A[i+2][0] = 0.0;
-		A[i+3][0] = 0.0;
+		zera_matriz (A, i, 0);
 		for (long long int k = 0; k < p; ++k){
 			aux = x[k];
 			atribui (A, b, safe[k], y[k], i, aux);	//seta os valores das i primeiras linhas da matriz e do vetor
