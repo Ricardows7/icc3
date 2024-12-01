@@ -3,7 +3,7 @@ PROGS = ajustePol gera_entrada
 
 # Compilador e flags
 CC     = gcc
-CFLAGS = -Wall -g -O3 -mavx -march=native
+CFLAGS = -Wall -g -O3 -mavx -march=native -DLIKWID_PERFMON
 LFLAGS = -lm -llikwid
 
 # Objetos
