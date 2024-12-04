@@ -69,7 +69,7 @@ void montaSL_V2(double ** restrict A, double * restrict b, int n, long long int 
 	for (long long int k = 0; k < p; k++)
 		safe[k] = 1;	//inicializa x[k] ^ i com i = 0!
 
-	for (int i = 0; i < n-n%4; i += 4){
+	for (int i = 0; i < n-(n%4); i += 4){
 		zera_vetor (b, i);
 		zera_matriz (A, i, 0);
 		for (long long int k = 0; k < p; ++k){
