@@ -3,8 +3,8 @@ PROGS = ajustePol gera_entrada
 
 # Compilador e flags
 CC     = gcc
-CFLAGS = -Wall -g -O3 -mavx -march=native -DLIKWID_PERFMON
-LFLAGS = -lm -llikwid
+CFLAGS = -Wall -g -O3 -mavx -march=native -DLIKWID_PERFMON -I${LIKWID_HOME}/include
+LFLAGS = -lm -llikwid -L${LIKWID_LIB}
 
 # Objetos
 OBJ_AJUSTE = ajustePol.o utils.o

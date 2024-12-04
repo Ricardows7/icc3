@@ -260,25 +260,34 @@ int main() {
   double *alpha = (double *) malloc(sizeof(double)*n); // coeficientes ajuste
   double *beta = (double *) malloc(sizeof(double)*n);
 
+  LIKWID_MARKER_INIT;
+  LIKWID_MARKER_START ("SL");
   // (A) Gera SL
   double tSL = timestamp();
   montaSL(A, b, n, p, x, y);
   tSL = timestamp() - tSL;
+  LIKWID_MARKER_STOP("SL");
 
+  LIKWID_MARKER_START("SL2");
   double tSL2 = timestamp();
   montaSL_V2(C, d, n, p, x, y, safe, imp);
   tSL2 = timestamp() - tSL2;
+  LIKWID_MARKER_STOP("SL2");
 
   // (B) Resolve SL
+  LIKWID_MARKER_START("EG");
   double tEG = timestamp();
   eliminacaoGauss(A, b, n); 
   retrossubs(A, b, alpha, n); 
   tEG = timestamp() - tEG;
+  LIKWID_MARKER_STOP("EG");
 
+ LIKWID_MARKER_START("EG2");
   double tEG2 = timestamp();
   eliminacaoGauss_V2(C,d,n);
   retrossubs(C,d,beta,n);
   tEG2 = timestamp() - tEG2;
+  LIKWID_MARKER_STOP("EG2");
 
   imprime (alpha, y, x, n, N, p, K, tSL, tEG);
   imprime (beta, y, x, n, N, p, K, tSL2, tEG2);
@@ -296,5 +305,6 @@ int main() {
   else
 	  printf ("NAO deu boa :(\n");
 
+  LIKWID_MARKER_CLOSE;
   return 0;
 }
