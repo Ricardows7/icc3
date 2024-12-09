@@ -24,26 +24,34 @@ void zera_vetor (double *restrict array, int init){
 	return;
 }
 
-void atribui (double ** restrict matrix, double * restrict array, double value, double mult, int init, double tax){
-	for (int i = 0; i < 4; i++){
-		array[init+i] = value * mult;
-		matrix[init+i][0] = value;
-		value *= tax;
-	}
+void atribui (double ** restrict matrix, double * restrict array, double value, double value1, double value2, double value3, double mult, int init){
+//esse nao sei se otimizou tanto :(
+	matrix[init][0] = value;
+	matrix[init+1][0] = value1;
+	matrix[init+2][0] = value2;
+	matrix[init+3][0] = value3;
+
+	array[init] += value * mult;
+	array[init+1] += value1 * mult;
+	array[init+2] += value2 * mult;
+	array[init+3] += value3 * mult;	//?????????????/
+
 	return;
 }
 
-void seta_matriz (double ** restrict matrix, double value, int init, int col, double tax){
-	for (int i = 0; i < 4; i++){
-		matrix[init+i][col] += value;
-		value *= tax;
-	}
+void seta_matriz (double ** restrict matrix, double value, int init, int col, double tax, double tax2, double tax3){
+	matrix[init][col] += value;
+	matrix[init+1][col] += value * tax;
+	matrix[init+2][col] += value * tax2;
+	matrix[init+3][col] += value * tax3;
 	return;
 }
 
 void zera_matriz (double ** restrict matriz, int init, int col){
-	for (int i = 0; i < 4; i++)
-		matriz[init+i][col] = 0.0;
+	matriz[init][col] = 0.0;
+	matriz[init+1][col] = 0.0;
+	matriz[init+2][col] = 0.0;
+	matriz[init+3][col] = 0.0;
 	return;
 }
 
@@ -72,19 +80,19 @@ void montaSL_V2(double ** restrict A, double * restrict b, int n, long long int 
 	for (int i = 0; i < n-(n%4); i += 4){
 		zera_vetor (b, i);
 		zera_matriz (A, i, 0);
-		for (long long int k = 0; k < p; ++k){
+		for (long long int k = 0; k < p; ++k){	//logica da primeira coluna e vetor!
 			aux = x[k];
-			atribui (A, b, safe[k], y[k], i, aux);	//seta os valores das i primeiras linhas da matriz e do vetor
+			atribui (A, b, safe[k], aux, aux*aux, aux*aux*aux, y[k], i);	//seta os valores das i primeiras linhas da matriz e do vetor
 			imp[k] = safe[k];	//vai guardar x[k] ^ i para o calculo da matriz
-			safe[k] *= aux;		//ja atualiza as postencias de x[k] para o proximo i!
+			safe[k] *= aux*aux*aux*aux;		//ja atualiza as postencias de x[k] para o proximo i! (JA QUE SAO 4 LINHAS POR VEZ NAO SERIA 3 * AUX?
 		}
 		for (int j = 1; j < n; j++){
 			zera_matriz (A, i, j); 
 			for (long long int k = 0; k < p; ++k){
 				aux = x[k];
 				imp[k] *= aux;	//calcula x[k] ^i + j!	
-				seta_matriz (A, imp[k], i, j, aux);
-			}
+				seta_matriz (A, imp[k], i, j, aux, aux*aux, aux*aux*aux);	//to passando pras proximas linhas!
+			}//tem que multiplicar por maix aux aqui por causa do imp!
 		}
 	}
 
@@ -101,7 +109,7 @@ void montaSL_V2(double ** restrict A, double * restrict b, int n, long long int 
 				helper *= aux;
 			}
 		}
-	}
+	}	//ACHO QUE O PROBLEMA ESTA NO VETOR!!!
 	return;
 }
 
@@ -252,7 +260,7 @@ int main() {
     A[i] = (double *) malloc(sizeof(double)*n);
   double **C = (double **) malloc (sizeof(double *)*n);
   for (int i = 0; i < n; ++i)
-    A[i] = (double *) malloc(sizeof(double)*n);
+    C[i] = (double *) malloc(sizeof(double)*n);
 
   double *b = (double *) malloc(sizeof(double)*n);
   double *d = (double *) malloc(sizeof(double)*n);
@@ -268,6 +276,7 @@ int main() {
   tSL = timestamp() - tSL;
   LIKWID_MARKER_STOP("SL");
 
+//printf("chegamos!\n");
   LIKWID_MARKER_START("SL2");
   double tSL2 = timestamp();
   montaSL_V2(C, d, n, p, x, y, safe, imp);
@@ -284,26 +293,33 @@ int main() {
 
  LIKWID_MARKER_START("EG2");
   double tEG2 = timestamp();
-  eliminacaoGauss_V2(C,d,n);
+  eliminacaoGauss(C,d,n);
   retrossubs(C,d,beta,n);
   tEG2 = timestamp() - tEG2;
   LIKWID_MARKER_STOP("EG2");
 
   imprime (alpha, y, x, n, N, p, K, tSL, tEG);
+printf ("\n\n\n");
   imprime (beta, y, x, n, N, p, K, tSL2, tEG2);
 
   bool certo = true;
+ int coor_x = 0, coor_y = 0;
   for (int i = 0; i < n; i++){
 	  for (int j = 0; j < n; j++)
-		  if (A[i][j] != C[i][j])
+		  if (A[i][j] != C[i][j]){
 			  certo = false;
+			  coor_x = i;
+			  coor_y = j;
+          }
 	  if (b[i] != d[i])
 		  certo = false;
   }
   if (certo)
 	  printf ("DEU BOAAA!\n");
-  else
+  else{
 	  printf ("NAO deu boa :(\n");
+		printf ("X: %d / Y: %d\n", coor_x, coor_y);
+  }
 
   LIKWID_MARKER_CLOSE;
   return 0;
