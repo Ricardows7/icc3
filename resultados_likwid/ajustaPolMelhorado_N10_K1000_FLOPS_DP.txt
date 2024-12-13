@@ -1,0 +1,73 @@
+--------------------------------------------------------------------------------
+CPU name:	Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz
+CPU type:	Intel Xeon SandyBridge EN/EP processor
+CPU clock:	2.59 GHz
+--------------------------------------------------------------------------------
+1000 2.0227632523e+00 7.7981948853e-03
+--------------------------------------------------------------------------------
+Region SL, Group 1: FLOPS_DP
++-------------------+----------+
+|    Region Info    |  Core 3  |
++-------------------+----------+
+| RDTSC Runtime [s] | 0.002027 |
+|     call count    |        1 |
++-------------------+----------+
+
++--------------------------------------+---------+---------+
+|                 Event                | Counter |  Core 3 |
++--------------------------------------+---------+---------+
+|           INSTR_RETIRED_ANY          |  FIXC0  | 3879577 |
+|         CPU_CLK_UNHALTED_CORE        |  FIXC1  | 2399901 |
+|         CPU_CLK_UNHALTED_REF         |  FIXC2  | 5199792 |
+| FP_COMP_OPS_EXE_SSE_FP_PACKED_DOUBLE |   PMC0  |       0 |
+| FP_COMP_OPS_EXE_SSE_FP_SCALAR_DOUBLE |   PMC1  | 1415681 |
+|       SIMD_FP_256_PACKED_DOUBLE      |   PMC2  |       0 |
++--------------------------------------+---------+---------+
+
++----------------------+-----------+
+|        Metric        |   Core 3  |
++----------------------+-----------+
+|  Runtime (RDTSC) [s] |    0.0020 |
+| Runtime unhalted [s] |    0.0009 |
+|      Clock [MHz]     | 1197.0999 |
+|          CPI         |    0.6186 |
+|      DP MFLOP/s      |  698.2958 |
+|    AVX DP MFLOP/s    |         0 |
+|    Packed MUOPS/s    |         0 |
+|    Scalar MUOPS/s    |  698.2958 |
+|  Vectorization ratio |         0 |
++----------------------+-----------+
+
+Region EG, Group 1: FLOPS_DP
++-------------------+----------+
+|    Region Info    |  Core 3  |
++-------------------+----------+
+| RDTSC Runtime [s] | 0.000008 |
+|     call count    |        1 |
++-------------------+----------+
+
++--------------------------------------+---------+--------+
+|                 Event                | Counter | Core 3 |
++--------------------------------------+---------+--------+
+|           INSTR_RETIRED_ANY          |  FIXC0  |   9605 |
+|         CPU_CLK_UNHALTED_CORE        |  FIXC1  |  20297 |
+|         CPU_CLK_UNHALTED_REF         |  FIXC2  |  43940 |
+| FP_COMP_OPS_EXE_SSE_FP_PACKED_DOUBLE |   PMC0  |     61 |
+| FP_COMP_OPS_EXE_SSE_FP_SCALAR_DOUBLE |   PMC1  |    433 |
+|       SIMD_FP_256_PACKED_DOUBLE      |   PMC2  |    152 |
++--------------------------------------+---------+--------+
+
++----------------------+--------------+
+|        Metric        |    Core 3    |
++----------------------+--------------+
+|  Runtime (RDTSC) [s] | 8.477329e-06 |
+| Runtime unhalted [s] | 7.825441e-06 |
+|      Clock [MHz]     |    1198.1049 |
+|          CPI         |       2.1132 |
+|      DP MFLOP/s      |     137.1894 |
+|    AVX DP MFLOP/s    |      71.7207 |
+|    Packed MUOPS/s    |      25.1258 |
+|    Scalar MUOPS/s    |      51.0774 |
+|  Vectorization ratio |      32.9721 |
++----------------------+--------------+
+

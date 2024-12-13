@@ -5,13 +5,12 @@ OUTDIR="resultados_likwid"                                                      
 GERA_ENTRADA="./gera_entrada"                                                          # Caminho para o programa gera_entrada
 VERSOES=("ajustaPol" "ajustaPolMelhorado")                                                # Versões do programa
 N_VALUES=(10 1000)                                                                     # Valores de N
-K_VALUES=(64 128 200 256) # 512 600 800 1024 2000 3000 4096 6000 7000 10000 50000 100000) # Valores de K
-#K_VALUES_N1=(1000000 10000000 100000000)                                               # Valores extras para N=10
+#K_VALUES=(64 128 200 256 512 600 800 1024 2000 3000 4096 6000 7000 10000 50000 100000) # Valores de K
+K_VALUES_EXTRA=(1000000 10000000 100000000)                                               # Valores extras para N=10
 
-# Métricas do LIKWID
+# Metricas
 METRICAS=("L3CACHE" "ENERGY" "FLOPS_DP")
 
-# Core para execução com LIKWID
 CORE=3
 
 # Criar diretório de saída
@@ -43,7 +42,7 @@ for n in "${N_VALUES[@]}"; do
 
     # Valores extras de K para N=10
     if [[ $n -eq 10 ]]; then
-        for k in "${K_VALUES_N1[@]}"; do
+        for k in "${K_VALUES_EXTRA[@]}"; do
             for version in "${VERSOES[@]}"; do
                 run_test $n $k $version
             done
