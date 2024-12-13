@@ -24,40 +24,36 @@ void zera_vetor (double *restrict array, int init){
 	return;
 }
 
-double atribui (double ** restrict matrix, double * restrict array, double value, double mult1, double mult2, int init){
-//esse nao sei se otimizou tanto :(
-	double a = pow(mult1, init);
-	double b = pow(mult1, init + 1);
-	double c = pow(mult1, init + 2);
-	double d = pow(mult1, init + 3);
+double atribui_matriz (double ** restrict matrix, int init, double *holster){
+	matrix[init][0] = holster[0];
+	matrix[init+1][0] = holster[1];
+	matrix[init+2][0] = holster[2];
+	matrix[init+3][0] = holster[3];
 
-	printf ("Na linha %d os values sao: %f %f %f %f %f\n", init, value, a, b, c, d);
-	matrix[init][0] = a;
-	matrix[init+1][0] = b;
-	matrix[init+2][0] = c;
-	matrix[init+3][0] = d;
-
-	array[init] += a * mult2;
-	array[init+1] += b * mult2;
-	array[init+2] += c * mult2;
-	array[init+3] += d * mult2;	//?????????????
-
-	return c;
+	return holster[3];
 }
 
-void seta_matriz (double ** restrict matrix, double value, int init, int col, double tax, bool mode){
-	if (mode){
-		matrix[init][col] += value;
-		matrix[init+1][col] += value * tax;
-		matrix[init+2][col] += value * tax * tax;
-		matrix[init+3][col] += value * tax * tax * tax;
-	}
-	else{
-		matrix[init][col] += pow(tax, init+col);
-		matrix[init+1][col] += pow(tax, init+col+1);
-		matrix[init+2][col] += pow(tax, init+col+2);
-		matrix[init+3][col] += pow(tax, init+col+3);
-	}
+void atribui_vetor (double * restrict array, double mult1, double mult2, int init, double *holster){
+	holster[0] = pow(mult1, init);
+	holster[1] = pow(mult1, init + 1);
+	holster[2] = pow(mult1, init + 2);
+	holster[3] = pow(mult1, init + 3);
+
+	//printf ("Na linha %d os values sao: %f %f %f %f\n", init, holster[0], holster[1], holster[2], holster[3]);
+
+	array[init] += holster[0] * mult2;
+	array[init+1] += holster[1] * mult2;
+	array[init+2] += holster[2] * mult2;
+	array[init+3] += holster[3] * mult2;	//?????????????
+
+	return;
+}
+
+void seta_matriz (double ** restrict matrix, double value, int init, int col, double tax){
+	matrix[init][col] += value;
+	matrix[init+1][col] += value * tax;
+	matrix[init+2][col] += value * tax * tax;
+	matrix[init+3][col] += value * tax * tax * tax;
 	return;
 }
 
@@ -100,37 +96,35 @@ void printaMatriz (double **A, double *b, int n){
 	return;
 }
 
-void montaSL_V2(double ** restrict A, double * restrict b, int n, long long int p, double * restrict x, double * restrict y, double * restrict safe, double * restrict imp, bool mode){
+void montaSL_V2(double ** restrict A, double * restrict b, int n, long long int p, double * restrict x, double * restrict y, double * restrict safe, double * restrict imp){
 	double aux = 0.0, helper = 0.0;
 	double extra = 0.0;
+	double *holster = malloc (4 * sizeof (double));
+	for (int i = 0; i < 4; i++)
+		holster[i] = 0.0;
 
 	for (long long int k = 0; k < p; k++){
 		safe[k] = 1;	//inicializa x[k] ^ i com i = 0!
-		printf ("O VETOR AUXILIAR %lld E: %f %f\n", k, x[k], y[k]);
 	}
 
 	for (int i = 0; i < n-(n%4); i += 4){
 		zera_vetor (b, i);		//zera as primeiras 4 posições
 		zera_matriz (A, i, 0);
-		for (long long int k = 1; k < p; ++k){	//logica da primeira coluna e vetor!
+		for (long long int k = 0; k < p; ++k){	//logica da primeira coluna e vetor!
 			aux = x[k];
 			imp[k] = safe[k];		//vai guardar x[k] ^ i para o calculo da matriz   
-			extra = atribui (A, b, safe[k], aux, y[k], i);	//seta os valores das i primeiras linhas da matriz e do vetor
-			if (mode)
-				safe[k] = extra * aux;
-			else
-				safe[k] = pow(x[k], i+4);
+			atribui_vetor (b, aux, y[k], i, holster);	//seta os valores das i primeiras linhas da matriz e do vetor
+			extra = atribui_matriz (A, i, holster);
+			safe[k] = extra * aux;
 		}
-		printf ("linha atual %d!\n\n", i);
+		
+		//printf ("linha atual %d!\n\n", i);
 		for (int j = 1; j < n; j++){
 			zera_matriz (A, i, j); 
 			for (long long int k = 0; k < p; ++k){
 				aux = x[k];
-				if (mode)
-					imp[k] *= aux;	//calcula x[k] ^i + j!	
-				else
-					imp[k] = pow (x[k], i + j);
-				seta_matriz (A, imp[k], i, j, aux, mode);	//to passando pras proximas linhas!
+				imp[k] *= aux;	//calcula x[k] ^i + j!	
+				seta_matriz (A, imp[k], i, j, aux);	//to passando pras proximas linhas!
 			}//tem que multiplicar por maix aux aqui por causa do imp!
 		}
 	}
@@ -149,6 +143,14 @@ void montaSL_V2(double ** restrict A, double * restrict b, int n, long long int 
 			}
 		}
 	}	//ACHO QUE O PROBLEMA ESTA NO VETOR!!!
+	for (int i = 0; i < n-(n%4); i++){
+		A[i][0] = 0.0;
+		for (long long int k = 0; k < p; k++){
+			aux = x[k];
+			helper = pow(aux, i);
+			A[i][0] += helper;
+		}
+	}
 	return;
 }
 
@@ -327,7 +329,7 @@ int main() {
 //printf("chegamos!\n");
   LIKWID_MARKER_START("SL2");
   double tSL2 = timestamp();
-  montaSL_V2(C, d, n, p, x, y, safe, imp, true);
+  montaSL_V2(C, d, n, p, x, y, safe, imp);
   tSL2 = timestamp() - tSL2;
   LIKWID_MARKER_STOP("SL2");
 
@@ -348,9 +350,9 @@ int main() {
   tEG2 = timestamp() - tEG2;
   LIKWID_MARKER_STOP("EG2");
 
-  imprime (alpha, y, x, n, N, p, K, tSL, tEG);
-printf ("\n\n\n");
-  imprime (beta, y, x, n, N, p, K, tSL2, tEG2);
+  //imprime (alpha, y, x, n, N, p, K, tSL, tEG);
+//printf ("\n\n\n");
+  //imprime (beta, y, x, n, N, p, K, tSL2, tEG2);
 
   bool certo = true;
  int coor_x = 0, coor_y = 0;
