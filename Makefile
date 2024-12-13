@@ -1,5 +1,5 @@
 # Programas
-PROGS = ajustePol gera_entrada
+PROGS = ajustaPol ajustaPolMelhorado gera_entrada
 
 # Compilador e flags
 CC     = gcc
@@ -7,16 +7,24 @@ CFLAGS = -Wall -g -O3 -mavx -march=native -DLIKWID_PERFMON -I${LIKWID_HOME}/incl
 LFLAGS = -lm -llikwid -L${LIKWID_LIB}
 
 # Objetos
-OBJ_AJUSTE = ajustePol.o utils.o
+OBJ_AJUSTAPOL = ajustaPol.o utils.o
+OBJ_AJUSTAPOLMELHORADO = ajustaPolMelhorado.o utils.o
 OBJ_GERA = gera_entrada.o utils.o
 
 all: $(PROGS)
 
-# Regras para ajustePol
-ajustePol: $(OBJ_AJUSTE)
+# Regras para ajustaPol
+ajustaPol: $(OBJ_AJUSTAPOL)
 	$(CC) -o $@ $^ $(LFLAGS)
 
-ajustePol.o: ajustePol.c utils.h
+ajustaPol.o: ajustaPol.c utils.h
+	$(CC) -c $< $(CFLAGS)
+
+# Regras para ajustaPolMelhorado
+ajustaPolMelhorado: $(OBJ_AJUSTAPOLMELHORADO)
+	$(CC) -o $@ $^ $(LFLAGS)
+
+ajustaPolMelhorado.o: ajustaPolMelhorado.c utils.h
 	$(CC) -c $< $(CFLAGS)
 
 # Regras para gera_entrada
@@ -44,4 +52,3 @@ dist: purge
 	@ln -s . $(DISTDIR)
 	@tar -cvf $(DISTDIR).tar $(addprefix ./$(DISTDIR)/, $(DISTFILES))
 	@rm -f $(DISTDIR)
-
