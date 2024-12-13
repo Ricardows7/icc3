@@ -33,20 +33,20 @@ double atribui_matriz (double ** restrict matrix, int init, double *holster){
 	return holster[3];
 }
 
-void atribui_vetor (double * restrict array, double mult1, double mult2, int init, double *holster){
-	holster[0] = pow(mult1, init);
-	holster[1] = pow(mult1, init + 1);
-	holster[2] = pow(mult1, init + 2);
-	holster[3] = pow(mult1, init + 3);
+double atribui_vetor (double * restrict array, double mult1, double mult2, int init){
+	double a = pow(mult1, init);
+	double b = pow(mult1, init + 1);
+	double c = pow(mult1, init + 2);
+	double d = pow(mult1, init + 3);
 
 	//printf ("Na linha %d os values sao: %f %f %f %f\n", init, holster[0], holster[1], holster[2], holster[3]);
 
-	array[init] += holster[0] * mult2;
-	array[init+1] += holster[1] * mult2;
-	array[init+2] += holster[2] * mult2;
-	array[init+3] += holster[3] * mult2;	//?????????????
+	array[init] += a * mult2;
+	array[init+1] += b * mult2;
+	array[init+2] += c * mult2;
+	array[init+3] += d * mult2;	//?????????????
 
-	return;
+	return d;
 }
 
 void seta_matriz (double ** restrict matrix, double value, int init, int col, double tax){
@@ -98,10 +98,6 @@ void printaMatriz (double **A, double *b, int n){
 
 void montaSL_V2(double ** restrict A, double * restrict b, int n, long long int p, double * restrict x, double * restrict y, double * restrict safe, double * restrict imp){
 	double aux = 0.0, helper = 0.0;
-	double extra = 0.0;
-	double *holster = malloc (4 * sizeof (double));
-	for (int i = 0; i < 4; i++)
-		holster[i] = 0.0;
 
 	for (long long int k = 0; k < p; k++){
 		safe[k] = 1;	//inicializa x[k] ^ i com i = 0!
@@ -113,9 +109,7 @@ void montaSL_V2(double ** restrict A, double * restrict b, int n, long long int 
 		for (long long int k = 0; k < p; ++k){	//logica da primeira coluna e vetor!
 			aux = x[k];
 			imp[k] = safe[k];		//vai guardar x[k] ^ i para o calculo da matriz   
-			atribui_vetor (b, aux, y[k], i, holster);	//seta os valores das i primeiras linhas da matriz e do vetor
-			extra = atribui_matriz (A, i, holster);
-			safe[k] = extra * aux;
+			safe[k] = atribui_vetor (b, aux, y[k], i) * aux;	//seta os valores das i primeiras linhas da matriz e do vetor
 		}
 		
 		//printf ("linha atual %d!\n\n", i);
