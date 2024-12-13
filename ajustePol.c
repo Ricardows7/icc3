@@ -302,51 +302,45 @@ int main() {
   double **A = (double **) malloc(sizeof(double *)*n);
   for (int i = 0; i < n; ++i)
     A[i] = (double *) malloc(sizeof(double)*n);
-  double **C = (double **) malloc (sizeof(double *)*n);
-  for (int i = 0; i < n; ++i)
-    C[i] = (double *) malloc(sizeof(double)*n);
 
   double *b = (double *) malloc(sizeof(double)*n);
-  double *d = (double *) malloc(sizeof(double)*n);
 
   double *alpha = (double *) malloc(sizeof(double)*n); // coeficientes ajuste
-  double *beta = (double *) malloc(sizeof(double)*n);
 
   LIKWID_MARKER_INIT;
   LIKWID_MARKER_START ("SL");
   // (A) Gera SL
   double tSL = timestamp();
-  montaSL(A, b, n, p, x, y);//, safe, imp, true);
+  montaSL_V2(A, b, n, p, x, y, safe, imp);
   tSL = timestamp() - tSL;
   LIKWID_MARKER_STOP("SL");
 
 //printf("chegamos!\n");
+/*
   LIKWID_MARKER_START("SL2");
   double tSL2 = timestamp();
   montaSL_V2(C, d, n, p, x, y, safe, imp);
   tSL2 = timestamp() - tSL2;
   LIKWID_MARKER_STOP("SL2");
-
-  printaMatriz (A, b, n);
-  printaMatriz (C,d,n);
+*/
+  //printaMatriz (A, b, n);
+  //printaMatriz (C,d,n);
   // (B) Resolve SL
+
   LIKWID_MARKER_START("EG");
   double tEG = timestamp();
-  eliminacaoGauss(A, b, n); 
+  eliminacaoGauss_V2(A, b, n); 
   retrossubs(A, b, alpha, n); 
   tEG = timestamp() - tEG;
   LIKWID_MARKER_STOP("EG");
 
+/*
  LIKWID_MARKER_START("EG2");
   double tEG2 = timestamp();
-  eliminacaoGauss(C,d,n);
+  eliminacaoGauss_V2(C,d,n);
   retrossubs(C,d,beta,n);
   tEG2 = timestamp() - tEG2;
   LIKWID_MARKER_STOP("EG2");
-
-  //imprime (alpha, y, x, n, N, p, K, tSL, tEG);
-//printf ("\n\n\n");
-  //imprime (beta, y, x, n, N, p, K, tSL2, tEG2);
 
   bool certo = true;
  int coor_x = 0, coor_y = 0;
@@ -365,7 +359,18 @@ int main() {
   else{
 	  printf ("NAO deu boa :(\n");
 		printf ("X: %d / Y: %d\n", coor_x, coor_y);
-  }
+  }*/
+
+  for (int i = 0; i < n; i++)
+	free(A[i]);
+	
+	free(A);
+	free(b);
+	free(alpha);
+	free (safe);
+	free (imp);
+	free (x);
+	free (y);
 
   LIKWID_MARKER_CLOSE;
   return 0;
