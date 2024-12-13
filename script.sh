@@ -5,7 +5,7 @@ OUTDIR="resultados_likwid"                                                      
 GERA_ENTRADA="./gera_entrada"                                                          # Caminho para o programa gera_entrada
 VERSOES=("ajustaPol" "ajustaPolMelhorado")                                                # Versões do programa
 N_VALUES=(10 1000)                                                                     # Valores de N
-#K_VALUES=(64 128 200 256 512 600 800 1024 2000 3000 4096 6000 7000 10000 50000 100000) # Valores de K
+K_VALUES=(64 128 200 256 512 600 800 1024 2000 3000 4096 6000 7000 10000 50000 100000) # Valores de K
 K_VALUES_EXTRA=(1000000 10000000 100000000)                                               # Valores extras para N=10
 
 # Metricas

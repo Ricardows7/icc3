@@ -1,0 +1,85 @@
+--------------------------------------------------------------------------------
+CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
+CPU type:	Intel Coffeelake processor
+CPU clock:	3.41 GHz
+--------------------------------------------------------------------------------
+7000 1.7661670798e+04 1.0136477901e+02
+--------------------------------------------------------------------------------
+Region SL, Group 1: ENERGY
++-------------------+-----------+
+|    Region Info    |   Core 3  |
++-------------------+-----------+
+| RDTSC Runtime [s] | 17.661440 |
+|     call count    |         1 |
++-------------------+-----------+
+
++-----------------------+---------+-------------+
+|         Event         | Counter |    Core 3   |
++-----------------------+---------+-------------+
+|   INSTR_RETIRED_ANY   |  FIXC0  | 30095050000 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  | 66550930000 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  | 59859220000 |
+|       TEMP_CORE       |   TMP0  |         223 |
+|     PWR_PKG_ENERGY    |   PWR0  |    191.2301 |
+|     PWR_PP0_ENERGY    |   PWR1  |    185.5759 |
+|     PWR_PP1_ENERGY    |   PWR2  |      0.1111 |
+|    PWR_DRAM_ENERGY    |   PWR3  |      9.1063 |
++-----------------------+---------+-------------+
+
++----------------------+-----------+
+|        Metric        |   Core 3  |
++----------------------+-----------+
+|  Runtime (RDTSC) [s] |   17.6614 |
+| Runtime unhalted [s] |   19.5278 |
+|      Clock [MHz]     | 3788.9907 |
+|          CPI         |    2.2114 |
+|    Temperature [C]   |       223 |
+|      Energy [J]      |  191.2301 |
+|       Power [W]      |   10.8275 |
+|    Energy PP0 [J]    |  185.5759 |
+|     Power PP0 [W]    |   10.5074 |
+|    Energy PP1 [J]    |    0.1111 |
+|     Power PP1 [W]    |    0.0063 |
+|    Energy DRAM [J]   |    9.1063 |
+|    Power DRAM [W]    |    0.5156 |
++----------------------+-----------+
+
+Region EG, Group 1: ENERGY
++-------------------+----------+
+|    Region Info    |  Core 3  |
++-------------------+----------+
+| RDTSC Runtime [s] | 0.101364 |
+|     call count    |        1 |
++-------------------+----------+
+
++-----------------------+---------+-----------+
+|         Event         | Counter |   Core 3  |
++-----------------------+---------+-----------+
+|   INSTR_RETIRED_ANY   |  FIXC0  | 446269000 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  | 380601000 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  | 342212900 |
+|       TEMP_CORE       |   TMP0  |       223 |
+|     PWR_PKG_ENERGY    |   PWR0  |    1.6545 |
+|     PWR_PP0_ENERGY    |   PWR1  |    1.5751 |
+|     PWR_PP1_ENERGY    |   PWR2  |         0 |
+|    PWR_DRAM_ENERGY    |   PWR3  |    0.1744 |
++-----------------------+---------+-----------+
+
++----------------------+-----------+
+|        Metric        |   Core 3  |
++----------------------+-----------+
+|  Runtime (RDTSC) [s] |    0.1014 |
+| Runtime unhalted [s] |    0.1117 |
+|      Clock [MHz]     | 3790.3037 |
+|          CPI         |    0.8529 |
+|    Temperature [C]   |       223 |
+|      Energy [J]      |    1.6545 |
+|       Power [W]      |   16.3222 |
+|    Energy PP0 [J]    |    1.5751 |
+|     Power PP0 [W]    |   15.5394 |
+|    Energy PP1 [J]    |         0 |
+|     Power PP1 [W]    |         0 |
+|    Energy DRAM [J]   |    0.1744 |
+|    Power DRAM [W]    |    1.7209 |
++----------------------+-----------+
+

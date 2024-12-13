@@ -1,40 +1,40 @@
 --------------------------------------------------------------------------------
-CPU name:	Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz
-CPU type:	Intel Xeon SandyBridge EN/EP processor
-CPU clock:	2.59 GHz
+CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
+CPU type:	Intel Coffeelake processor
+CPU clock:	3.41 GHz
 --------------------------------------------------------------------------------
-128 1.4749097824e-01 3.4790039062e-03
+128 6.0202002525e-02 1.1119991541e-03
 --------------------------------------------------------------------------------
 Region SL, Group 1: FLOPS_DP
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000150 |
+| RDTSC Runtime [s] | 0.000062 |
 |     call count    |        1 |
 +-------------------+----------+
 
-+--------------------------------------+---------+--------+
-|                 Event                | Counter | Core 3 |
-+--------------------------------------+---------+--------+
-|           INSTR_RETIRED_ANY          |  FIXC0  | 502972 |
-|         CPU_CLK_UNHALTED_CORE        |  FIXC1  | 363319 |
-|         CPU_CLK_UNHALTED_REF         |  FIXC2  | 363194 |
-| FP_COMP_OPS_EXE_SSE_FP_PACKED_DOUBLE |   PMC0  |      0 |
-| FP_COMP_OPS_EXE_SSE_FP_SCALAR_DOUBLE |   PMC1  | 181461 |
-|       SIMD_FP_256_PACKED_DOUBLE      |   PMC2  |      0 |
-+--------------------------------------+---------+--------+
++------------------------------------------+---------+--------+
+|                   Event                  | Counter | Core 3 |
++------------------------------------------+---------+--------+
+|             INSTR_RETIRED_ANY            |  FIXC0  | 397178 |
+|           CPU_CLK_UNHALTED_CORE          |  FIXC1  | 213291 |
+|           CPU_CLK_UNHALTED_REF           |  FIXC2  | 197664 |
+| FP_ARITH_INST_RETIRED_128B_PACKED_DOUBLE |   PMC0  |      0 |
+|    FP_ARITH_INST_RETIRED_SCALAR_DOUBLE   |   PMC1  | 165777 |
+| FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE |   PMC2  |      0 |
++------------------------------------------+---------+--------+
 
 +----------------------+-----------+
 |        Metric        |   Core 3  |
 +----------------------+-----------+
-|  Runtime (RDTSC) [s] |    0.0002 |
+|  Runtime (RDTSC) [s] |    0.0001 |
 | Runtime unhalted [s] |    0.0001 |
-|      Clock [MHz]     | 2594.6296 |
-|          CPI         |    0.7223 |
-|      DP MFLOP/s      | 1208.5782 |
+|      Clock [MHz]     | 3677.1277 |
+|          CPI         |    0.5370 |
+|      DP MFLOP/s      | 2691.2519 |
 |    AVX DP MFLOP/s    |         0 |
 |    Packed MUOPS/s    |         0 |
-|    Scalar MUOPS/s    | 1208.5782 |
+|    Scalar MUOPS/s    | 2691.2519 |
 |  Vectorization ratio |         0 |
 +----------------------+-----------+
 
@@ -42,32 +42,32 @@ Region EG, Group 1: FLOPS_DP
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000004 |
+| RDTSC Runtime [s] | 0.000001 |
 |     call count    |        1 |
 +-------------------+----------+
 
-+--------------------------------------+---------+--------+
-|                 Event                | Counter | Core 3 |
-+--------------------------------------+---------+--------+
-|           INSTR_RETIRED_ANY          |  FIXC0  |   9586 |
-|         CPU_CLK_UNHALTED_CORE        |  FIXC1  |  20971 |
-|         CPU_CLK_UNHALTED_REF         |  FIXC2  |  20956 |
-| FP_COMP_OPS_EXE_SSE_FP_PACKED_DOUBLE |   PMC0  |     58 |
-| FP_COMP_OPS_EXE_SSE_FP_SCALAR_DOUBLE |   PMC1  |    428 |
-|       SIMD_FP_256_PACKED_DOUBLE      |   PMC2  |    152 |
-+--------------------------------------+---------+--------+
++------------------------------------------+---------+--------+
+|                   Event                  | Counter | Core 3 |
++------------------------------------------+---------+--------+
+|             INSTR_RETIRED_ANY            |  FIXC0  |   8935 |
+|           CPU_CLK_UNHALTED_CORE          |  FIXC1  |  13601 |
+|           CPU_CLK_UNHALTED_REF           |  FIXC2  |  12780 |
+| FP_ARITH_INST_RETIRED_128B_PACKED_DOUBLE |   PMC0  |     56 |
+|    FP_ARITH_INST_RETIRED_SCALAR_DOUBLE   |   PMC1  |    419 |
+| FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE |   PMC2  |    152 |
++------------------------------------------+---------+--------+
 
 +----------------------+--------------+
 |        Metric        |    Core 3    |
 +----------------------+--------------+
-|  Runtime (RDTSC) [s] | 3.831127e-06 |
-| Runtime unhalted [s] | 8.085246e-06 |
-|      Clock [MHz]     |    2595.5935 |
-|          CPI         |       2.1877 |
-|      DP MFLOP/s      |     300.6948 |
-|    AVX DP MFLOP/s    |     158.7000 |
-|    Packed MUOPS/s    |      54.8142 |
-|    Scalar MUOPS/s    |     111.7165 |
-|  Vectorization ratio |      32.9154 |
+|  Runtime (RDTSC) [s] | 1.262908e-06 |
+| Runtime unhalted [s] | 3.991233e-06 |
+|      Clock [MHz]     |    3626.6341 |
+|          CPI         |       1.5222 |
+|      DP MFLOP/s      |     901.8868 |
+|    AVX DP MFLOP/s    |     481.4286 |
+|    Packed MUOPS/s    |     164.6992 |
+|    Scalar MUOPS/s    |     331.7740 |
+|  Vectorization ratio |      33.1738 |
 +----------------------+--------------+
 

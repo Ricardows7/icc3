@@ -1,69 +1,69 @@
 --------------------------------------------------------------------------------
-CPU name:	Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz
-CPU type:	Intel Xeon SandyBridge EN/EP processor
-CPU clock:	2.59 GHz
+CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
+CPU type:	Intel Coffeelake processor
+CPU clock:	3.41 GHz
 --------------------------------------------------------------------------------
-200 3.8243475785e+04 1.2631271977e+03
+200 3.3848452650e+03 1.0987303099e+02
 --------------------------------------------------------------------------------
 Region SL, Group 1: L3CACHE
-+-------------------+-----------+
-|    Region Info    |   Core 3  |
-+-------------------+-----------+
-| RDTSC Runtime [s] | 38.243330 |
-|     call count    |         1 |
-+-------------------+-----------+
++-------------------+----------+
+|    Region Info    |  Core 3  |
++-------------------+----------+
+| RDTSC Runtime [s] | 3.384812 |
+|     call count    |        1 |
++-------------------+----------+
 
-+----------------------------+---------+--------------+
-|            Event           | Counter |    Core 3    |
-+----------------------------+---------+--------------+
-|      INSTR_RETIRED_ANY     |  FIXC0  | 1.844674e+19 |
-|    CPU_CLK_UNHALTED_CORE   |  FIXC1  | 1.844674e+19 |
-|    CPU_CLK_UNHALTED_REF    |  FIXC2  | 1.844674e+19 |
-| OFFCORE_RESPONSE_0_OPTIONS |   PMC0  | 1.844674e+19 |
-| OFFCORE_RESPONSE_1_OPTIONS |   PMC1  | 1.844674e+19 |
-|       L1D_REPLACEMENT      |   PMC2  | 1.844674e+19 |
-+----------------------------+---------+--------------+
++--------------------------+---------+-------------+
+|           Event          | Counter |    Core 3   |
++--------------------------+---------+-------------+
+|     INSTR_RETIRED_ANY    |  FIXC0  | 28886780000 |
+|   CPU_CLK_UNHALTED_CORE  |  FIXC1  | 12750920000 |
+|   CPU_CLK_UNHALTED_REF   |  FIXC2  | 11468190000 |
+|  MEM_LOAD_RETIRED_L3_HIT |   PMC0  |        1822 |
+| MEM_LOAD_RETIRED_L3_MISS |   PMC1  |         280 |
+|     UOPS_RETIRED_ALL     |   PMC2  | 33864890000 |
++--------------------------+---------+-------------+
 
 +----------------------+--------------+
 |        Metric        |    Core 3    |
 +----------------------+--------------+
-|  Runtime (RDTSC) [s] |      38.2433 |
-| Runtime unhalted [s] | 7.112043e+09 |
-|      Clock [MHz]     |    2593.7328 |
-|          CPI         |            1 |
-|    L3 request rate   |            1 |
-|     L3 miss rate     |            1 |
-|     L3 miss ratio    |            1 |
+|  Runtime (RDTSC) [s] |       3.3848 |
+| Runtime unhalted [s] |       3.7415 |
+|      Clock [MHz]     |    3789.1948 |
+|          CPI         |       0.4414 |
+|    L3 request rate   | 6.207019e-08 |
+|     L3 miss rate     | 8.268150e-09 |
+|     L3 miss ratio    |       0.1332 |
 +----------------------+--------------+
 
 Region EG, Group 1: L3CACHE
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 1.263124 |
+| RDTSC Runtime [s] | 0.109872 |
 |     call count    |        1 |
 +-------------------+----------+
 
-+----------------------------+---------+--------+
-|            Event           | Counter | Core 3 |
-+----------------------------+---------+--------+
-|      INSTR_RETIRED_ANY     |  FIXC0  |      0 |
-|    CPU_CLK_UNHALTED_CORE   |  FIXC1  |      0 |
-|    CPU_CLK_UNHALTED_REF    |  FIXC2  |      0 |
-| OFFCORE_RESPONSE_0_OPTIONS |   PMC0  |      0 |
-| OFFCORE_RESPONSE_1_OPTIONS |   PMC1  |      0 |
-|       L1D_REPLACEMENT      |   PMC2  |      0 |
-+----------------------------+---------+--------+
++--------------------------+---------+-----------+
+|           Event          | Counter |   Core 3  |
++--------------------------+---------+-----------+
+|     INSTR_RETIRED_ANY    |  FIXC0  | 528990000 |
+|   CPU_CLK_UNHALTED_CORE  |  FIXC1  | 412988500 |
+|   CPU_CLK_UNHALTED_REF   |  FIXC2  | 371304400 |
+|  MEM_LOAD_RETIRED_L3_HIT |   PMC0  |   5991662 |
+| MEM_LOAD_RETIRED_L3_MISS |   PMC1  |   1353896 |
+|     UOPS_RETIRED_ALL     |   PMC2  | 615350400 |
++--------------------------+---------+-----------+
 
-+----------------------+--------+
-|        Metric        | Core 3 |
-+----------------------+--------+
-|  Runtime (RDTSC) [s] | 1.2631 |
-| Runtime unhalted [s] |      0 |
-|      Clock [MHz]     |    -   |
-|          CPI         |    -   |
-|    L3 request rate   |    -   |
-|     L3 miss rate     |    -   |
-|     L3 miss ratio    |    -   |
-+----------------------+--------+
++----------------------+-----------+
+|        Metric        |   Core 3  |
++----------------------+-----------+
+|  Runtime (RDTSC) [s] |    0.1099 |
+| Runtime unhalted [s] |    0.1212 |
+|      Clock [MHz]     | 3790.6017 |
+|          CPI         |    0.7807 |
+|    L3 request rate   |    0.0119 |
+|     L3 miss rate     |    0.0022 |
+|     L3 miss ratio    |    0.1843 |
++----------------------+-----------+
 
