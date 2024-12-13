@@ -9,7 +9,7 @@
 
 #include "utils.h"
 
-#define BLOCK_SIZE 64
+#define BLOCK_SIZE 90
 
 /////////////////////////////////////////////////////////////////////////////////////
 //   AJUSTE DE CURVAS
@@ -24,26 +24,40 @@ void zera_vetor (double *restrict array, int init){
 	return;
 }
 
-void atribui (double ** restrict matrix, double * restrict array, double value, double value1, double value2, double value3, double mult, int init){
+double atribui (double ** restrict matrix, double * restrict array, double value, double mult1, double mult2, int init){
 //esse nao sei se otimizou tanto :(
-	matrix[init][0] = value;
-	matrix[init+1][0] = value1;
-	matrix[init+2][0] = value2;
-	matrix[init+3][0] = value3;
+	double a = pow(mult1, init);
+	double b = pow(mult1, init + 1);
+	double c = pow(mult1, init + 2);
+	double d = pow(mult1, init + 3);
 
-	array[init] += value * mult;
-	array[init+1] += value1 * mult;
-	array[init+2] += value2 * mult;
-	array[init+3] += value3 * mult;	//?????????????/
+	printf ("Na linha %d os values sao: %f %f %f %f %f\n", init, value, a, b, c, d);
+	matrix[init][0] = a;
+	matrix[init+1][0] = b;
+	matrix[init+2][0] = c;
+	matrix[init+3][0] = d;
 
-	return;
+	array[init] += a * mult2;
+	array[init+1] += b * mult2;
+	array[init+2] += c * mult2;
+	array[init+3] += d * mult2;	//?????????????
+
+	return c;
 }
 
-void seta_matriz (double ** restrict matrix, double value, int init, int col, double tax, double tax2, double tax3){
-	matrix[init][col] += value;
-	matrix[init+1][col] += value * tax;
-	matrix[init+2][col] += value * tax2;
-	matrix[init+3][col] += value * tax3;
+void seta_matriz (double ** restrict matrix, double value, int init, int col, double tax, bool mode){
+	if (mode){
+		matrix[init][col] += value;
+		matrix[init+1][col] += value * tax;
+		matrix[init+2][col] += value * tax * tax;
+		matrix[init+3][col] += value * tax * tax * tax;
+	}
+	else{
+		matrix[init][col] += pow(tax, init+col);
+		matrix[init+1][col] += pow(tax, init+col+1);
+		matrix[init+2][col] += pow(tax, init+col+2);
+		matrix[init+3][col] += pow(tax, init+col+3);
+	}
 	return;
 }
 
@@ -71,32 +85,57 @@ void montaSL(double **A, double *b, int n, long long int p, double *x, double *y
   }
 }
 
-void montaSL_V2(double ** restrict A, double * restrict b, int n, long long int p, double * restrict x, double * restrict y, double * restrict safe, double * restrict imp){
-	double aux = 0.0, helper = 0.0;
+void printaMatriz (double **A, double *b, int n){
+	printf("COMECANDO A PRINTAR O VETOR!:"); 
+	for (int i = 0; i < n; i++)
+		printf ("%f ", b[i]);
+	printf ("\n\n");
+	printf ("COMECANDO A PRINTAR A MATRIZ!:\n");
+	for (int i = 0; i < n; i++){
+		for (int j = 0; j < n; j++)
+			printf ("%f ", A[i][j]);
+		printf ("\n");
+	}
+	printf ("\n\n");
+	return;
+}
 
-	for (long long int k = 0; k < p; k++)
+void montaSL_V2(double ** restrict A, double * restrict b, int n, long long int p, double * restrict x, double * restrict y, double * restrict safe, double * restrict imp, bool mode){
+	double aux = 0.0, helper = 0.0;
+	double extra = 0.0;
+
+	for (long long int k = 0; k < p; k++){
 		safe[k] = 1;	//inicializa x[k] ^ i com i = 0!
+		printf ("O VETOR AUXILIAR %lld E: %f %f\n", k, x[k], y[k]);
+	}
 
 	for (int i = 0; i < n-(n%4); i += 4){
-		zera_vetor (b, i);
+		zera_vetor (b, i);		//zera as primeiras 4 posições
 		zera_matriz (A, i, 0);
-		for (long long int k = 0; k < p; ++k){	//logica da primeira coluna e vetor!
+		for (long long int k = 1; k < p; ++k){	//logica da primeira coluna e vetor!
 			aux = x[k];
-			atribui (A, b, safe[k], aux, aux*aux, aux*aux*aux, y[k], i);	//seta os valores das i primeiras linhas da matriz e do vetor
-			imp[k] = safe[k];	//vai guardar x[k] ^ i para o calculo da matriz
-			safe[k] *= aux*aux*aux*aux;		//ja atualiza as postencias de x[k] para o proximo i! (JA QUE SAO 4 LINHAS POR VEZ NAO SERIA 3 * AUX?
+			imp[k] = safe[k];		//vai guardar x[k] ^ i para o calculo da matriz   
+			extra = atribui (A, b, safe[k], aux, y[k], i);	//seta os valores das i primeiras linhas da matriz e do vetor
+			if (mode)
+				safe[k] = extra * aux;
+			else
+				safe[k] = pow(x[k], i+4);
 		}
+		printf ("linha atual %d!\n\n", i);
 		for (int j = 1; j < n; j++){
 			zera_matriz (A, i, j); 
 			for (long long int k = 0; k < p; ++k){
 				aux = x[k];
-				imp[k] *= aux;	//calcula x[k] ^i + j!	
-				seta_matriz (A, imp[k], i, j, aux, aux*aux, aux*aux*aux);	//to passando pras proximas linhas!
+				if (mode)
+					imp[k] *= aux;	//calcula x[k] ^i + j!	
+				else
+					imp[k] = pow (x[k], i + j);
+				seta_matriz (A, imp[k], i, j, aux, mode);	//to passando pras proximas linhas!
 			}//tem que multiplicar por maix aux aqui por causa do imp!
 		}
 	}
 
-	for (int i = n-n%4; i < n; ++i){
+	for (int i = n-(n%4); i < n; ++i){
 		b[i] = 0.0;
 		for (int j = 0; j < n; j++)
 			A[i][j] = 0.0;
@@ -113,7 +152,7 @@ void montaSL_V2(double ** restrict A, double * restrict b, int n, long long int 
 	return;
 }
 
-long pivo (double **A, double *b, int ori, int max){
+double pivo (double **A, double *b, int ori, int max){
 	double *tmp, aux;
 
 	tmp = A[ori];
@@ -154,45 +193,54 @@ void eliminacaoGauss(double **A, double *b, int n) {
   }
 }
 
-void eliminacaoGauss_V2 (double **A, double *b, int n) {
+void eliminacaoGauss_V2 (double **A, double *b, int n){
   for (int i = 0; i < n; ++i) {
     // Encontra o pivô máximo na coluna
     int iMax = i;
+    double maxVal = fabs(A[i][i]);
     for (int k = i + 1; k < n; ++k) {
-      if (fabs(A[k][i]) > fabs(A[iMax][i]))
-        iMax = k;
+      double val = fabs(A[k][i]);
+      iMax = (val > maxVal) ? k : iMax;
+      maxVal = (val > maxVal) ? val : maxVal;
     }
 
-    // Troca as linhas, se necessário
-    if (iMax != i) {
-      pivo(A,b,i,iMax);
-    }
+    // Troca as linhas
+    pivo(A, b, i, iMax);
 
-    // Eliminação com blocos
+    // Calcula o inverso do pivô para evitar divisão dentro dos loops
+    double invPivo = 1.0 / A[i][i];
+
+    // Eliminação por blocos
     for (int k = i + 1; k < n; k += BLOCK_SIZE) {
-      int kEnd = (k + BLOCK_SIZE > n) ? n : k + BLOCK_SIZE;
-      
-      // Loop unrolling para processar linhas em blocos
+      int kEnd = k + BLOCK_SIZE;
+      if (kEnd > n) kEnd = n;
+
       for (int kk = k; kk < kEnd; ++kk) {
-        double m = A[kk][i] / A[i][i];
+        double m = A[kk][i] * invPivo; // Multiplicação mais eficiente que divisão
         b[kk] -= b[i] * m;
 
-        // Unrolling em j
-        for (int j = i + 1; j + 3 < n; j += 4) {
+        // Processa em blocos de 8 elementos com loop unrolling
+        int j = i + 1;
+        for (; j + 7 < n; j += 8) {
           A[kk][j] -= A[i][j] * m;
           A[kk][j + 1] -= A[i][j + 1] * m;
           A[kk][j + 2] -= A[i][j + 2] * m;
           A[kk][j + 3] -= A[i][j + 3] * m;
+          A[kk][j + 4] -= A[i][j + 4] * m;
+          A[kk][j + 5] -= A[i][j + 5] * m;
+          A[kk][j + 6] -= A[i][j + 6] * m;
+          A[kk][j + 7] -= A[i][j + 7] * m;
         }
 
-        // Restante (caso n não seja múltiplo de 4)
-        for (int j = n - (n % 4); j < n; ++j) {
+        // Processa os elementos restantes
+        for (; j < n; ++j) {
           A[kk][j] -= A[i][j] * m;
         }
       }
     }
   }
 }
+
 
 void retrossubs(double **A, double *b, double *x, int n) {
   for (int i = n-1; i >= 0; --i) {
@@ -272,17 +320,19 @@ int main() {
   LIKWID_MARKER_START ("SL");
   // (A) Gera SL
   double tSL = timestamp();
-  montaSL(A, b, n, p, x, y);
+  montaSL(A, b, n, p, x, y);//, safe, imp, true);
   tSL = timestamp() - tSL;
   LIKWID_MARKER_STOP("SL");
 
 //printf("chegamos!\n");
   LIKWID_MARKER_START("SL2");
   double tSL2 = timestamp();
-  montaSL_V2(C, d, n, p, x, y, safe, imp);
+  montaSL_V2(C, d, n, p, x, y, safe, imp, true);
   tSL2 = timestamp() - tSL2;
   LIKWID_MARKER_STOP("SL2");
 
+  printaMatriz (A, b, n);
+  printaMatriz (C,d,n);
   // (B) Resolve SL
   LIKWID_MARKER_START("EG");
   double tEG = timestamp();
