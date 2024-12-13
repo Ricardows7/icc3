@@ -1,71 +1,79 @@
 --------------------------------------------------------------------------------
-CPU name:	AMD EPYC 7401 24-Core Processor
-CPU type:	AMD K17 (Zen) architecture
-CPU clock:	2.00 GHz
+CPU name:	Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz
+CPU type:	Intel Xeon SandyBridge EN/EP processor
+CPU clock:	2.59 GHz
 --------------------------------------------------------------------------------
-256 2.7239036560e-01 5.5103302002e-03
+256 5.3975486755e-01 6.7963600159e-03
 --------------------------------------------------------------------------------
 Region SL, Group 1: ENERGY
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000278 |
+| RDTSC Runtime [s] | 0.000544 |
 |     call count    |        1 |
 +-------------------+----------+
 
-+----------------------+---------+--------+
-|         Event        | Counter | Core 3 |
-+----------------------+---------+--------+
-|   ACTUAL_CPU_CLOCK   |  FIXC1  |    -   |
-|     MAX_CPU_CLOCK    |  FIXC2  |    -   |
-| RETIRED_INSTRUCTIONS |   PMC0  | 786689 |
-|  CPU_CLOCKS_UNHALTED |   PMC1  | 650457 |
-|   RAPL_CORE_ENERGY   |   PWR0  |    -   |
-|    RAPL_PKG_ENERGY   |   PWR1  |    -   |
-+----------------------+---------+--------+
++-----------------------+---------+---------+
+|         Event         | Counter |  Core 3 |
++-----------------------+---------+---------+
+|   INSTR_RETIRED_ANY   |  FIXC0  |  999452 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  |  644487 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  | 1396330 |
+|       TEMP_CORE       |   TMP0  |     202 |
+|     PWR_PKG_ENERGY    |   PWR0  |  0.0182 |
+|     PWR_PP0_ENERGY    |   PWR1  |  0.0049 |
+|    PWR_DRAM_ENERGY    |   PWR3  |  0.0049 |
++-----------------------+---------+---------+
 
-+----------------------+--------+
-|        Metric        | Core 3 |
-+----------------------+--------+
-|  Runtime (RDTSC) [s] | 0.0003 |
-| Runtime unhalted [s] |      0 |
-|      Clock [MHz]     |    -   |
-|          CPI         | 0.8268 |
-|    Energy Core [J]   |      0 |
-|    Power Core [W]    |      0 |
-|    Energy PKG [J]    |      0 |
-|     Power PKG [W]    |      0 |
-+----------------------+--------+
++----------------------+-----------+
+|        Metric        |   Core 3  |
++----------------------+-----------+
+|  Runtime (RDTSC) [s] |    0.0005 |
+| Runtime unhalted [s] |    0.0002 |
+|      Clock [MHz]     | 1197.1691 |
+|          CPI         |    0.6448 |
+|    Temperature [C]   |       202 |
+|      Energy [J]      |    0.0182 |
+|       Power [W]      |   33.4440 |
+|    Energy PP0 [J]    |    0.0049 |
+|     Power PP0 [W]    |    9.0063 |
+|    Energy DRAM [J]   |    0.0049 |
+|    Power DRAM [W]    |    9.0344 |
++----------------------+-----------+
 
 Region EG, Group 1: ENERGY
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000006 |
+| RDTSC Runtime [s] | 0.000008 |
 |     call count    |        1 |
 +-------------------+----------+
 
-+----------------------+---------+--------+
-|         Event        | Counter | Core 3 |
-+----------------------+---------+--------+
-|   ACTUAL_CPU_CLOCK   |  FIXC1  |    -   |
-|     MAX_CPU_CLOCK    |  FIXC2  |    -   |
-| RETIRED_INSTRUCTIONS |   PMC0  |   8984 |
-|  CPU_CLOCKS_UNHALTED |   PMC1  |  30527 |
-|   RAPL_CORE_ENERGY   |   PWR0  |    -   |
-|    RAPL_PKG_ENERGY   |   PWR1  |    -   |
-+----------------------+---------+--------+
++-----------------------+---------+--------+
+|         Event         | Counter | Core 3 |
++-----------------------+---------+--------+
+|   INSTR_RETIRED_ANY   |  FIXC0  |   9777 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  |  18875 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  |  40924 |
+|       TEMP_CORE       |   TMP0  |    202 |
+|     PWR_PKG_ENERGY    |   PWR0  | 0.0189 |
+|     PWR_PP0_ENERGY    |   PWR1  | 0.0052 |
+|    PWR_DRAM_ENERGY    |   PWR3  | 0.0048 |
++-----------------------+---------+--------+
 
 +----------------------+--------------+
 |        Metric        |    Core 3    |
 +----------------------+--------------+
-|  Runtime (RDTSC) [s] | 6.200103e-06 |
-| Runtime unhalted [s] |            0 |
-|      Clock [MHz]     |       -      |
-|          CPI         |       3.3979 |
-|    Energy Core [J]   |            0 |
-|    Power Core [W]    |            0 |
-|    Energy PKG [J]    |            0 |
-|     Power PKG [W]    |            0 |
+|  Runtime (RDTSC) [s] | 7.618291e-06 |
+| Runtime unhalted [s] | 7.277087e-06 |
+|      Clock [MHz]     |    1196.2950 |
+|          CPI         |       1.9306 |
+|    Temperature [C]   |          202 |
+|      Energy [J]      |       0.0189 |
+|       Power [W]      |    2475.6025 |
+|    Energy PP0 [J]    |       0.0052 |
+|     Power PP0 [W]    |     678.9881 |
+|    Energy DRAM [J]   |       0.0048 |
+|    Power DRAM [W]    |     634.9240 |
 +----------------------+--------------+
 

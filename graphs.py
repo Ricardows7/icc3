@@ -44,7 +44,7 @@ def plot_results(data, metric, ylabel, output_file):
         )
 
     plt.xscale("log")
-    plt.yscale("log")
+    #plt.yscale("log")
     plt.xlabel("Número de pontos (K)")
     plt.ylabel(ylabel)
     plt.title(f"Desempenho de {metric}")

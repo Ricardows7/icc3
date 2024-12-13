@@ -1,4 +1,69 @@
 --------------------------------------------------------------------------------
-CPU name:	AMD EPYC 7401 24-Core Processor
-CPU type:	AMD K17 (Zen) architecture
-CPU clock:	2.00 GHz
+CPU name:	Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz
+CPU type:	Intel Xeon SandyBridge EN/EP processor
+CPU clock:	2.59 GHz
+--------------------------------------------------------------------------------
+128 1.1528491974e-01 2.7060508728e-03
+--------------------------------------------------------------------------------
+Region SL, Group 1: L3CACHE
++-------------------+----------+
+|    Region Info    |  Core 3  |
++-------------------+----------+
+| RDTSC Runtime [s] | 0.000118 |
+|     call count    |        1 |
++-------------------+----------+
+
++----------------------------+---------+--------+
+|            Event           | Counter | Core 3 |
++----------------------------+---------+--------+
+|      INSTR_RETIRED_ANY     |  FIXC0  | 502970 |
+|    CPU_CLK_UNHALTED_CORE   |  FIXC1  | 363392 |
+|    CPU_CLK_UNHALTED_REF    |  FIXC2  | 295204 |
+| OFFCORE_RESPONSE_0_OPTIONS |   PMC0  |    173 |
+| OFFCORE_RESPONSE_1_OPTIONS |   PMC1  |    340 |
+|       L1D_REPLACEMENT      |   PMC2  |    676 |
++----------------------------+---------+--------+
+
++----------------------+-----------+
+|        Metric        |   Core 3  |
++----------------------+-----------+
+|  Runtime (RDTSC) [s] |    0.0001 |
+| Runtime unhalted [s] |    0.0001 |
+|      Clock [MHz]     | 3192.8283 |
+|          CPI         |    0.7225 |
+|    L3 request rate   |    0.0007 |
+|     L3 miss rate     |    0.0003 |
+|     L3 miss ratio    |    0.5088 |
++----------------------+-----------+
+
+Region EG, Group 1: L3CACHE
++-------------------+----------+
+|    Region Info    |  Core 3  |
++-------------------+----------+
+| RDTSC Runtime [s] | 0.000003 |
+|     call count    |        1 |
++-------------------+----------+
+
++----------------------------+---------+--------+
+|            Event           | Counter | Core 3 |
++----------------------------+---------+--------+
+|      INSTR_RETIRED_ANY     |  FIXC0  |   9586 |
+|    CPU_CLK_UNHALTED_CORE   |  FIXC1  |  20022 |
+|    CPU_CLK_UNHALTED_REF    |  FIXC2  |  16250 |
+| OFFCORE_RESPONSE_0_OPTIONS |   PMC0  |     17 |
+| OFFCORE_RESPONSE_1_OPTIONS |   PMC1  |    100 |
+|       L1D_REPLACEMENT      |   PMC2  |    260 |
++----------------------------+---------+--------+
+
++----------------------+--------------+
+|        Metric        |    Core 3    |
++----------------------+--------------+
+|  Runtime (RDTSC) [s] | 2.962118e-06 |
+| Runtime unhalted [s] | 7.719426e-06 |
+|      Clock [MHz]     |    3195.7775 |
+|          CPI         |       2.0887 |
+|    L3 request rate   |       0.0104 |
+|     L3 miss rate     |       0.0018 |
+|     L3 miss ratio    |       0.1700 |
++----------------------+--------------+
+

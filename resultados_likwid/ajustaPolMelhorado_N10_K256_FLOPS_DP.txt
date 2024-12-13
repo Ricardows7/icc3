@@ -1,69 +1,73 @@
 --------------------------------------------------------------------------------
-CPU name:	AMD EPYC 7401 24-Core Processor
-CPU type:	AMD K17 (Zen) architecture
-CPU clock:	2.00 GHz
+CPU name:	Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz
+CPU type:	Intel Xeon SandyBridge EN/EP processor
+CPU clock:	2.59 GHz
 --------------------------------------------------------------------------------
-256 2.6397037506e-01 5.4292678833e-03
+256 2.6130199432e-01 3.3378601074e-03
 --------------------------------------------------------------------------------
 Region SL, Group 1: FLOPS_DP
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000277 |
+| RDTSC Runtime [s] | 0.000264 |
 |     call count    |        1 |
 +-------------------+----------+
 
-+-------------------------------------------+---------+--------+
-|                   Event                   | Counter | Core 3 |
-+-------------------------------------------+---------+--------+
-|              ACTUAL_CPU_CLOCK             |  FIXC1  |    -   |
-|               MAX_CPU_CLOCK               |  FIXC2  |    -   |
-|            RETIRED_INSTRUCTIONS           |   PMC0  | 787589 |
-|      RETIRED_SSE_AVX_FLOPS_DOUBLE_FMA     |   PMC1  |      0 |
-|          RETIRED_MMX_FP_INSTR_ALL         |   PMC2  | 444600 |
-| RETIRED_SSE_AVX_FLOPS_DOUBLE_ADD_MULT_DIV |   PMC3  |      0 |
-+-------------------------------------------+---------+--------+
++--------------------------------------+---------+--------+
+|                 Event                | Counter | Core 3 |
++--------------------------------------+---------+--------+
+|           INSTR_RETIRED_ANY          |  FIXC0  | 998620 |
+|         CPU_CLK_UNHALTED_CORE        |  FIXC1  | 663016 |
+|         CPU_CLK_UNHALTED_REF         |  FIXC2  | 663000 |
+| FP_COMP_OPS_EXE_SSE_FP_PACKED_DOUBLE |   PMC0  |      0 |
+| FP_COMP_OPS_EXE_SSE_FP_SCALAR_DOUBLE |   PMC1  | 362737 |
+|       SIMD_FP_256_PACKED_DOUBLE      |   PMC2  |      0 |
++--------------------------------------+---------+--------+
 
-+-----------------------------+-----------+
-|            Metric           |   Core 3  |
-+-----------------------------+-----------+
-|     Runtime (RDTSC) [s]     |    0.0003 |
-|     Runtime unhalted [s]    |         0 |
-|         Clock [MHz]         |     -     |
-|             CPI             |     -     |
-| DP MFLOP/s (scalar assumed) |  803.7923 |
-|   DP MFLOP/s (SSE assumed)  | 1607.5845 |
-|   DP MFLOP/s (AVX assumed)  | 3215.1690 |
-+-----------------------------+-----------+
++----------------------+-----------+
+|        Metric        |   Core 3  |
++----------------------+-----------+
+|  Runtime (RDTSC) [s] |    0.0003 |
+| Runtime unhalted [s] |    0.0003 |
+|      Clock [MHz]     | 2593.7961 |
+|          CPI         |    0.6639 |
+|      DP MFLOP/s      | 1372.8083 |
+|    AVX DP MFLOP/s    |         0 |
+|    Packed MUOPS/s    |         0 |
+|    Scalar MUOPS/s    | 1372.8083 |
+|  Vectorization ratio |         0 |
++----------------------+-----------+
 
 Region EG, Group 1: FLOPS_DP
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000007 |
+| RDTSC Runtime [s] | 0.000004 |
 |     call count    |        1 |
 +-------------------+----------+
 
-+-------------------------------------------+---------+--------+
-|                   Event                   | Counter | Core 3 |
-+-------------------------------------------+---------+--------+
-|              ACTUAL_CPU_CLOCK             |  FIXC1  |    -   |
-|               MAX_CPU_CLOCK               |  FIXC2  |    -   |
-|            RETIRED_INSTRUCTIONS           |   PMC0  |   9890 |
-|      RETIRED_SSE_AVX_FLOPS_DOUBLE_FMA     |   PMC1  |    720 |
-|          RETIRED_MMX_FP_INSTR_ALL         |   PMC2  |   1598 |
-| RETIRED_SSE_AVX_FLOPS_DOUBLE_ADD_MULT_DIV |   PMC3  |      0 |
-+-------------------------------------------+---------+--------+
++--------------------------------------+---------+--------+
+|                 Event                | Counter | Core 3 |
++--------------------------------------+---------+--------+
+|           INSTR_RETIRED_ANY          |  FIXC0  |   9605 |
+|         CPU_CLK_UNHALTED_CORE        |  FIXC1  |  19510 |
+|         CPU_CLK_UNHALTED_REF         |  FIXC2  |  19474 |
+| FP_COMP_OPS_EXE_SSE_FP_PACKED_DOUBLE |   PMC0  |     57 |
+| FP_COMP_OPS_EXE_SSE_FP_SCALAR_DOUBLE |   PMC1  |    431 |
+|       SIMD_FP_256_PACKED_DOUBLE      |   PMC2  |    152 |
++--------------------------------------+---------+--------+
 
-+-----------------------------+--------------+
-|            Metric           |    Core 3    |
-+-----------------------------+--------------+
-|     Runtime (RDTSC) [s]     | 6.620097e-06 |
-|     Runtime unhalted [s]    |            0 |
-|         Clock [MHz]         |       -      |
-|             CPI             |       -      |
-| DP MFLOP/s (scalar assumed) |     338.2126 |
-|   DP MFLOP/s (SSE assumed)  |     458.9057 |
-|   DP MFLOP/s (AVX assumed)  |     700.2919 |
-+-----------------------------+--------------+
++----------------------+--------------+
+|        Metric        |    Core 3    |
++----------------------+--------------+
+|  Runtime (RDTSC) [s] | 3.631798e-06 |
+| Runtime unhalted [s] | 7.521976e-06 |
+|      Clock [MHz]     |    2598.5283 |
+|          CPI         |       2.0312 |
+|      DP MFLOP/s      |     317.4736 |
+|    AVX DP MFLOP/s    |     167.4102 |
+|    Packed MUOPS/s    |      57.5473 |
+|    Scalar MUOPS/s    |     118.6740 |
+|  Vectorization ratio |      32.6562 |
++----------------------+--------------+
 
