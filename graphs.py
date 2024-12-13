@@ -4,7 +4,7 @@ import re
 
 def load_metrics(input_dir, metric_name):
     data = {}
-    versions = ["ajustePol_v1", "ajustePol_v2"]
+    versions = ["ajustaPol", "ajustaPolMelhorado"]
     N_values = [10, 1000]
 
     for version in versions:
