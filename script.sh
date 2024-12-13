@@ -3,10 +3,10 @@
 # Configuração inicial
 OUTDIR="resultados_likwid"                                                             # Diretório para armazenar os resultados
 GERA_ENTRADA="./gera_entrada"                                                          # Caminho para o programa gera_entrada
-VERSOES=("ajustePol_v1" "ajustePol_v2")                                                # Versões do programa
+VERSOES=("ajustaPol" "ajustaPolMelhorado")                                                # Versões do programa
 N_VALUES=(10 1000)                                                                     # Valores de N
-K_VALUES=(64 128 200 256 512 600 800 1024 2000 3000 4096 6000 7000 10000 50000 100000) # Valores de K
-K_VALUES_N1=(1000000 10000000 100000000)                                               # Valores extras para N=10
+K_VALUES=(64 128 200 256 512 600) # 800 1024 2000 3000 4096 6000 7000 10000 50000 100000) # Valores de K
+#K_VALUES_N1=(1000000 10000000 100000000)                                               # Valores extras para N=10
 
 # Métricas do LIKWID
 METRICAS=("L3CACHE" "ENERGY" "FLOPS_DP")

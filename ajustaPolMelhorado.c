@@ -361,8 +361,11 @@ int main() {
 		printf ("X: %d / Y: %d\n", coor_x, coor_y);
   }*/
 
-  for (int i = 0; i < n; i++)
+  printf("%lld %1.10e %1.10e\n", K, tSL, tEG);  
+
+  for (int i = 0; i < n; i++){
 	free(A[i]);
+  }
 	
 	free(A);
 	free(b);
