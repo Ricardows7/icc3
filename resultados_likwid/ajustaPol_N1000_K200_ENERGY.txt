@@ -1,4 +1,71 @@
 --------------------------------------------------------------------------------
-CPU name:	Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz
-CPU type:	Intel Core Westmere processor
-CPU clock:	2.39 GHz
+CPU name:	AMD EPYC 7401 24-Core Processor
+CPU type:	AMD K17 (Zen) architecture
+CPU clock:	2.00 GHz
+--------------------------------------------------------------------------------
+200 7.8171750164e+03 3.0743404770e+02
+--------------------------------------------------------------------------------
+Region SL, Group 1: ENERGY
++-------------------+----------+
+|    Region Info    |  Core 3  |
++-------------------+----------+
+| RDTSC Runtime [s] | 7.817293 |
+|     call count    |        1 |
++-------------------+----------+
+
++----------------------+---------+-------------+
+|         Event        | Counter |    Core 3   |
++----------------------+---------+-------------+
+|   ACTUAL_CPU_CLOCK   |  FIXC1  |      -      |
+|     MAX_CPU_CLOCK    |  FIXC2  |      -      |
+| RETIRED_INSTRUCTIONS |   PMC0  | 28886790000 |
+|  CPU_CLOCKS_UNHALTED |   PMC1  | 21362100000 |
+|   RAPL_CORE_ENERGY   |   PWR0  |      -      |
+|    RAPL_PKG_ENERGY   |   PWR1  |      -      |
++----------------------+---------+-------------+
+
++----------------------+--------+
+|        Metric        | Core 3 |
++----------------------+--------+
+|  Runtime (RDTSC) [s] | 7.8173 |
+| Runtime unhalted [s] |      0 |
+|      Clock [MHz]     |    -   |
+|          CPI         | 0.7395 |
+|    Energy Core [J]   |      0 |
+|    Power Core [W]    |      0 |
+|    Energy PKG [J]    |      0 |
+|     Power PKG [W]    |      0 |
++----------------------+--------+
+
+Region EG, Group 1: ENERGY
++-------------------+----------+
+|    Region Info    |  Core 3  |
++-------------------+----------+
+| RDTSC Runtime [s] | 0.307442 |
+|     call count    |        1 |
++-------------------+----------+
+
++----------------------+---------+------------+
+|         Event        | Counter |   Core 3   |
++----------------------+---------+------------+
+|   ACTUAL_CPU_CLOCK   |  FIXC1  |      -     |
+|     MAX_CPU_CLOCK    |  FIXC2  |      -     |
+| RETIRED_INSTRUCTIONS |   PMC0  | 1024098000 |
+|  CPU_CLOCKS_UNHALTED |   PMC1  |  825022200 |
+|   RAPL_CORE_ENERGY   |   PWR0  |      -     |
+|    RAPL_PKG_ENERGY   |   PWR1  |      -     |
++----------------------+---------+------------+
+
++----------------------+--------+
+|        Metric        | Core 3 |
++----------------------+--------+
+|  Runtime (RDTSC) [s] | 0.3074 |
+| Runtime unhalted [s] |      0 |
+|      Clock [MHz]     |    -   |
+|          CPI         | 0.8056 |
+|    Energy Core [J]   |      0 |
+|    Power Core [W]    |      0 |
+|    Energy PKG [J]    |      0 |
+|     Power PKG [W]    |      0 |
++----------------------+--------+
+

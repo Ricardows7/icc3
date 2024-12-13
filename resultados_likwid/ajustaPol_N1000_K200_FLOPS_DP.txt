@@ -1,6 +1,69 @@
 --------------------------------------------------------------------------------
-CPU name:	Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz
-CPU type:	Intel Core Westmere processor
-CPU clock:	2.39 GHz
+CPU name:	AMD EPYC 7401 24-Core Processor
+CPU type:	AMD K17 (Zen) architecture
+CPU clock:	2.00 GHz
 --------------------------------------------------------------------------------
+200 1.0085322244e+04 3.0867580795e+02
 --------------------------------------------------------------------------------
+Region SL, Group 1: FLOPS_DP
++-------------------+-----------+
+|    Region Info    |   Core 3  |
++-------------------+-----------+
+| RDTSC Runtime [s] | 10.085710 |
+|     call count    |         1 |
++-------------------+-----------+
+
++-------------------------------------------+---------+-------------+
+|                   Event                   | Counter |    Core 3   |
++-------------------------------------------+---------+-------------+
+|              ACTUAL_CPU_CLOCK             |  FIXC1  |      -      |
+|               MAX_CPU_CLOCK               |  FIXC2  |      -      |
+|            RETIRED_INSTRUCTIONS           |   PMC0  | 28886790000 |
+|      RETIRED_SSE_AVX_FLOPS_DOUBLE_FMA     |   PMC1  |           0 |
+|          RETIRED_MMX_FP_INSTR_ALL         |   PMC2  | 15280620000 |
+| RETIRED_SSE_AVX_FLOPS_DOUBLE_ADD_MULT_DIV |   PMC3  |           0 |
++-------------------------------------------+---------+-------------+
+
++-----------------------------+-----------+
+|            Metric           |   Core 3  |
++-----------------------------+-----------+
+|     Runtime (RDTSC) [s]     |   10.0857 |
+|     Runtime unhalted [s]    |         0 |
+|         Clock [MHz]         |     -     |
+|             CPI             |     -     |
+| DP MFLOP/s (scalar assumed) |  757.5381 |
+|   DP MFLOP/s (SSE assumed)  | 1515.0763 |
+|   DP MFLOP/s (AVX assumed)  | 3030.1526 |
++-----------------------------+-----------+
+
+Region EG, Group 1: FLOPS_DP
++-------------------+----------+
+|    Region Info    |  Core 3  |
++-------------------+----------+
+| RDTSC Runtime [s] | 0.308687 |
+|     call count    |        1 |
++-------------------+----------+
+
++-------------------------------------------+---------+------------+
+|                   Event                   | Counter |   Core 3   |
++-------------------------------------------+---------+------------+
+|              ACTUAL_CPU_CLOCK             |  FIXC1  |      -     |
+|               MAX_CPU_CLOCK               |  FIXC2  |      -     |
+|            RETIRED_INSTRUCTIONS           |   PMC0  | 1024099000 |
+|      RETIRED_SSE_AVX_FLOPS_DOUBLE_FMA     |   PMC1  |  667167000 |
+|          RETIRED_MMX_FP_INSTR_ALL         |   PMC2  |  507145100 |
+| RETIRED_SSE_AVX_FLOPS_DOUBLE_ADD_MULT_DIV |   PMC3  |          0 |
++-------------------------------------------+---------+------------+
+
++-----------------------------+-----------+
+|            Metric           |   Core 3  |
++-----------------------------+-----------+
+|     Runtime (RDTSC) [s]     |    0.3087 |
+|     Runtime unhalted [s]    |         0 |
+|         Clock [MHz]         |     -     |
+|             CPI             |     -     |
+| DP MFLOP/s (scalar assumed) | 5144.0601 |
+|   DP MFLOP/s (SSE assumed)  | 5965.5143 |
+|   DP MFLOP/s (AVX assumed)  | 7608.4226 |
++-----------------------------+-----------+
+
