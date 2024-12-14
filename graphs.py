@@ -6,11 +6,30 @@ import re
 resultados_dir = "resultados_likwid"
 
 # Função para carregar métricas usando regex
-def load_metrics(input_dir, metric_name, metric_key):
-    data = {}
+def load_metrics(input_dir, metric_name):
+    data = {
+        "ajustaPol_N10": {"K": [], "value": []},
+        "ajustaPol_N1000": {"K": [], "value": []},
+        "ajustaPolMelhorado_N10": {"K": [], "value": []},
+        "ajustaPolMelhorado_N1000": {"K": [], "value": []},
+    }
+
     for file in os.listdir(input_dir):
-        if metric_name in file:
-            # Extrair informações do nome do arquivo
+        # Identificar a versão e o valor de N a partir do nome do arquivo
+        if "ajustaPol" in file:
+            if "Melhorado" in file:
+                version = "ajustaPolMelhorado"
+            else:
+                version = "ajustaPol"
+
+            if "_N10_" in file:
+                N = "N10"
+            elif "_N1000_" in file:
+                N = "N1000"
+            else:
+                continue
+
+            # Extrair o valor de K
             match_k = re.search(r'_K(\d+)_', file)
             if not match_k:
                 continue
@@ -31,11 +50,10 @@ def load_metrics(input_dir, metric_name, metric_key):
                 match = re.search(metric_regex.get(metric_name, ""), content)
                 if match:
                     value = float(match.group(1))
-                    label = file.replace(".txt", "").replace("_", " ")
-                    if label not in data:
-                        data[label] = {"K": [], "value": []}
-                    data[label]["K"].append(K)
-                    data[label]["value"].append(value)
+                    key = f"{version}_{N}"
+                    data[key]["K"].append(K)
+                    data[key]["value"].append(value)
+
     return data
 
 # Função para plotar os gráficos
@@ -43,14 +61,17 @@ def plot_results(data, metric, ylabel, output_file):
     plt.figure(figsize=(10, 6))
 
     for label, results in data.items():
-        plt.plot(results["K"], results["value"], label=label, marker="o")
+        # Ordenar os valores de K e value para formar retas contínuas
+        sorted_data = sorted(zip(results["K"], results["value"]))
+        sorted_k, sorted_value = zip(*sorted_data)
+        plt.plot(sorted_k, sorted_value, label=label, marker="o")
 
     plt.xscale("log")
     plt.yscale("log")
     plt.xlabel("Número de pontos (K)")
     plt.ylabel(ylabel)
     plt.title(f"Desempenho de {metric}")
-    plt.legend()
+    plt.legend()  # Adiciona a legenda
     plt.grid(True, which="both", linestyle="--", linewidth=0.5)
     plt.savefig(output_file)
     plt.close()
@@ -65,7 +86,7 @@ if __name__ == "__main__":
     ]
 
     for metric_name, ylabel, output_file in metrics:
-        data = load_metrics(resultados_dir, metric_name, ylabel)
+        data = load_metrics(resultados_dir, metric_name)
         plot_results(data, metric_name, ylabel, output_file)
 
     print("Gráficos gerados com sucesso!")
