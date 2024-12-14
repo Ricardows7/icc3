@@ -62,12 +62,12 @@ def plot_results(data, metric, ylabel, output_file):
 
     for label, results in data.items():
         # Ordenar os valores de K e value para formar retas contínuas
-        sorted_data = sorted(zip(results["K"], results["value"]))
-        sorted_k, sorted_value = zip(*sorted_data)
-        plt.plot(sorted_k, sorted_value, label=label, marker="o")
+        if results["K"] and results["value"]:
+            sorted_data = sorted(zip(results["K"], results["value"]))
+            sorted_k, sorted_value = zip(*sorted_data)
+            plt.plot(sorted_k, sorted_value, label=label, marker="o")
 
-    plt.xscale("log")
-    plt.yscale("log")
+    plt.xscale("log")  # Apenas o eixo X em escala logarítmica
     plt.xlabel("Número de pontos (K)")
     plt.ylabel(ylabel)
     plt.title(f"Desempenho de {metric}")

@@ -1,2 +1,12 @@
-O trabalho foi feito através da melhoria de duas funções. Na função montaSL_V2, introduzi loop unrool em quase todas as operações, além do armazenamento do valor da função pow para uso posterior, com exceção de 2 casos. Na primeira coluna da matriz fui obrigado a usa pow em todas as linhas, devido aos valores serem muito pequenos e denormalizarem facilmente. Dessa forma, não consegui manter valores aceitáveis sem o uso de pow. Além disso, no resto loop unrool, acabei utilizando das chamadas a pow novamente, por serem no máximo 3 linhas e não ser muito impactante no desempenho do resto do programa. Quanto à função eliminaGauss_V2, não consegui fazer muito além da estratégia de blocking. Pela arquitetura utilizada ser o pc h29 do dinf, com L1 de 32kB, acabei usando blocos de tamanho 64. As tabelas foram feitas com a opção -O para facilitar na plotagem dos gráficos. 
+O trabalho foi feito através da melhoria de duas funções. Na função montaSL_V2, introduzi loop unrool em quase todas as operações, além do armazenamento do valor da função pow para uso posterior, com exceção de 2 casos. Na primeira coluna da matriz fui obrigado a usa pow em todas as linhas, devido aos valores serem muito pequenos e denormalizarem facilmente. Dessa forma, não consegui manter valores aceitáveis sem o uso de pow. Além disso, no resto loop unrool, acabei utilizando das chamadas a pow novamente, por serem no máximo 3 linhas e não ser muito impactante no desempenho do resto do programa. Quanto à função eliminaGauss_V2, não consegui fazer muito além da estratégia de blocking. Pela arquitetura utilizada ser o pc h29 do dinf, com L1 de 32kB, acabei usando blocos de tamanho 64. As tabelas foram feitas com a opção -O para facilitar na plotagem dos gráficos.
+
+Gráficos:
+
+L3 - A l3 miss teve queda ate o valor de 10⁵ pontos, voltando subir posteriormente. Provavelmente 10⁵ e o valor aproximado da cache, minimizando os miss
+
+ENERGY - A energy foi extremamente maio no ajustaPol original, provavelmente devido aos cálculos de pow. Os outro ficaram estáveis
+
+Flops avx - Pareceu não haver variação, pura estabilidade
+
+FLOPS DP - ajustaPol melhorado com n 1000 teve de longe o menor valor. os outros apresentaram variações bruscas. no geral, a versão melhorada apresentou menor taxa no eixo y 
 
