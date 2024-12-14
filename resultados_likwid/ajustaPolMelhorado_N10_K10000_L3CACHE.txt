@@ -3,67 +3,53 @@ CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
 CPU type:	Intel Coffeelake processor
 CPU clock:	3.41 GHz
 --------------------------------------------------------------------------------
-10000 3.7731660008e+00 1.3529956341e-03
+10000 3.7946510017e+00 1.1390000582e-03
 --------------------------------------------------------------------------------
-Region SL, Group 1: L3CACHE
-+-------------------+----------+
-|    Region Info    |  Core 3  |
-+-------------------+----------+
-| RDTSC Runtime [s] | 0.003775 |
-|     call count    |        1 |
-+-------------------+----------+
-
-+--------------------------+---------+----------+
-|           Event          | Counter |  Core 3  |
-+--------------------------+---------+----------+
-|     INSTR_RETIRED_ANY    |  FIXC0  | 30467330 |
-|   CPU_CLK_UNHALTED_CORE  |  FIXC1  | 14000610 |
-|   CPU_CLK_UNHALTED_REF   |  FIXC2  | 12589290 |
-|  MEM_LOAD_RETIRED_L3_HIT |   PMC0  |      545 |
-| MEM_LOAD_RETIRED_L3_MISS |   PMC1  |       47 |
-|     UOPS_RETIRED_ALL     |   PMC2  | 37485750 |
-+--------------------------+---------+----------+
-
-+----------------------+--------------+
-|        Metric        |    Core 3    |
-+----------------------+--------------+
-|  Runtime (RDTSC) [s] |       0.0038 |
-| Runtime unhalted [s] |       0.0041 |
-|      Clock [MHz]     |    3790.0026 |
-|          CPI         |       0.4595 |
-|    L3 request rate   | 1.579267e-05 |
-|     L3 miss rate     | 1.253810e-06 |
-|     L3 miss ratio    |       0.0794 |
-+----------------------+--------------+
-
-Region EG, Group 1: L3CACHE
-+-------------------+----------+
-|    Region Info    |  Core 3  |
-+-------------------+----------+
-| RDTSC Runtime [s] | 0.000002 |
-|     call count    |        1 |
-+-------------------+----------+
-
-+--------------------------+---------+--------+
-|           Event          | Counter | Core 3 |
-+--------------------------+---------+--------+
-|     INSTR_RETIRED_ANY    |  FIXC0  |   8916 |
-|   CPU_CLK_UNHALTED_CORE  |  FIXC1  |  15087 |
-|   CPU_CLK_UNHALTED_REF   |  FIXC2  |  13490 |
-|  MEM_LOAD_RETIRED_L3_HIT |   PMC0  |     56 |
-| MEM_LOAD_RETIRED_L3_MISS |   PMC1  |      2 |
-|     UOPS_RETIRED_ALL     |   PMC2  |  11542 |
-+--------------------------+---------+--------+
-
-+----------------------+--------------+
-|        Metric        |    Core 3    |
-+----------------------+--------------+
-|  Runtime (RDTSC) [s] | 1.547534e-06 |
-| Runtime unhalted [s] | 4.426996e-06 |
-|      Clock [MHz]     |    3811.4018 |
-|          CPI         |       1.6921 |
-|    L3 request rate   |       0.0050 |
-|     L3 miss rate     |       0.0002 |
-|     L3 miss ratio    |       0.0345 |
-+----------------------+--------------+
-
+STRUCT,Info,3
+CPU name:,Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz,
+CPU type:,Intel Coffeelake processor,
+CPU clock:,3.407975162 GHz,
+TABLE,Region SL,Group 1 Raw,L3CACHE,6
+Region Info,Core 3,
+RDTSC Runtime [s],0.003796,
+call count,1,
+Event,Counter,Core 3
+INSTR_RETIRED_ANY,FIXC0,30467330
+CPU_CLK_UNHALTED_CORE,FIXC1,14004840
+CPU_CLK_UNHALTED_REF,FIXC2,12670090
+MEM_LOAD_RETIRED_L3_HIT,PMC0,815
+MEM_LOAD_RETIRED_L3_MISS,PMC1,50
+UOPS_RETIRED_ALL,PMC2,37484280
+TABLE,Region SL,Group 1 Metric,L3CACHE,7
+Metric,Core 3,
+Runtime (RDTSC) [s],0.0038,
+Runtime unhalted [s],0.0041,
+Clock [MHz],3766.9935,
+CPI,0.4597,
+L3 request rate,2.307634e-05,
+L3 miss rate,1.333893e-06,
+L3 miss ratio,0.0578,
+STRUCT,Info,3
+CPU name:,Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz,
+CPU type:,Intel Coffeelake processor,
+CPU clock:,3.407975162 GHz,
+TABLE,Region EG,Group 1 Raw,L3CACHE,6
+Region Info,Core 3,
+RDTSC Runtime [s],0.000001,
+call count,1,
+Event,Counter,Core 3
+INSTR_RETIRED_ANY,FIXC0,8916
+CPU_CLK_UNHALTED_CORE,FIXC1,13562
+CPU_CLK_UNHALTED_REF,FIXC2,12496
+MEM_LOAD_RETIRED_L3_HIT,PMC0,60
+MEM_LOAD_RETIRED_L3_MISS,PMC1,2
+UOPS_RETIRED_ALL,PMC2,11551
+TABLE,Region EG,Group 1 Metric,L3CACHE,7
+Metric,Core 3,
+Runtime (RDTSC) [s],1.319835e-06,
+Runtime unhalted [s],3.979489e-06,
+Clock [MHz],3698.7003,
+CPI,1.5211,
+L3 request rate,0.0054,
+L3 miss rate,0.0002,
+L3 miss ratio,0.0323,

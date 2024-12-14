@@ -3,67 +3,53 @@ CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
 CPU type:	Intel Coffeelake processor
 CPU clock:	3.41 GHz
 --------------------------------------------------------------------------------
-10000 1.6884504424e+05 1.0676385200e+02
+10000 1.6875742064e+05 1.0380449900e+02
 --------------------------------------------------------------------------------
-Region SL, Group 1: L3CACHE
-+-------------------+------------+
-|    Region Info    |   Core 3   |
-+-------------------+------------+
-| RDTSC Runtime [s] | 168.843400 |
-|     call count    |          1 |
-+-------------------+------------+
-
-+--------------------------+---------+---------------+
-|           Event          | Counter |     Core 3    |
-+--------------------------+---------+---------------+
-|     INSTR_RETIRED_ANY    |  FIXC0  | 1443769000000 |
-|   CPU_CLK_UNHALTED_CORE  |  FIXC1  |  636004500000 |
-|   CPU_CLK_UNHALTED_REF   |  FIXC2  |  571921100000 |
-|  MEM_LOAD_RETIRED_L3_HIT |   PMC0  |        129603 |
-| MEM_LOAD_RETIRED_L3_MISS |   PMC1  |         15544 |
-|     UOPS_RETIRED_ALL     |   PMC2  | 1692414000000 |
-+--------------------------+---------+---------------+
-
-+----------------------+--------------+
-|        Metric        |    Core 3    |
-+----------------------+--------------+
-|  Runtime (RDTSC) [s] |     168.8434 |
-| Runtime unhalted [s] |     186.6210 |
-|      Clock [MHz]     |    3789.8648 |
-|          CPI         |       0.4405 |
-|    L3 request rate   | 8.576329e-08 |
-|     L3 miss rate     | 9.184514e-09 |
-|     L3 miss ratio    |       0.1071 |
-+----------------------+--------------+
-
-Region EG, Group 1: L3CACHE
-+-------------------+----------+
-|    Region Info    |  Core 3  |
-+-------------------+----------+
-| RDTSC Runtime [s] | 0.106763 |
-|     call count    |        1 |
-+-------------------+----------+
-
-+--------------------------+---------+-----------+
-|           Event          | Counter |   Core 3  |
-+--------------------------+---------+-----------+
-|     INSTR_RETIRED_ANY    |  FIXC0  | 528989900 |
-|   CPU_CLK_UNHALTED_CORE  |  FIXC1  | 400689500 |
-|   CPU_CLK_UNHALTED_REF   |  FIXC2  | 360377100 |
-|  MEM_LOAD_RETIRED_L3_HIT |   PMC0  |   5794021 |
-| MEM_LOAD_RETIRED_L3_MISS |   PMC1  |    941203 |
-|     UOPS_RETIRED_ALL     |   PMC2  | 615423900 |
-+--------------------------+---------+-----------+
-
-+----------------------+-----------+
-|        Metric        |   Core 3  |
-+----------------------+-----------+
-|  Runtime (RDTSC) [s] |    0.1068 |
-| Runtime unhalted [s] |    0.1176 |
-|      Clock [MHz]     | 3789.2253 |
-|          CPI         |    0.7575 |
-|    L3 request rate   |    0.0109 |
-|     L3 miss rate     |    0.0015 |
-|     L3 miss ratio    |    0.1397 |
-+----------------------+-----------+
-
+STRUCT,Info,3
+CPU name:,Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz,
+CPU type:,Intel Coffeelake processor,
+CPU clock:,3.407947744 GHz,
+TABLE,Region SL,Group 1 Raw,L3CACHE,6
+Region Info,Core 3,
+RDTSC Runtime [s],168.755600,
+call count,1,
+Event,Counter,Core 3
+INSTR_RETIRED_ANY,FIXC0,1443769000000
+CPU_CLK_UNHALTED_CORE,FIXC1,636039300000
+CPU_CLK_UNHALTED_REF,FIXC2,572011100000
+MEM_LOAD_RETIRED_L3_HIT,PMC0,882898
+MEM_LOAD_RETIRED_L3_MISS,PMC1,10841
+UOPS_RETIRED_ALL,PMC2,1692407000000
+TABLE,Region SL,Group 1 Metric,L3CACHE,7
+Metric,Core 3,
+Runtime (RDTSC) [s],168.7556,
+Runtime unhalted [s],186.6341,
+Clock [MHz],3789.4172,
+CPI,0.4405,
+L3 request rate,5.280875e-07,
+L3 miss rate,6.405670e-09,
+L3 miss ratio,0.0121,
+STRUCT,Info,3
+CPU name:,Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz,
+CPU type:,Intel Coffeelake processor,
+CPU clock:,3.407947744 GHz,
+TABLE,Region EG,Group 1 Raw,L3CACHE,6
+Region Info,Core 3,
+RDTSC Runtime [s],0.103804,
+call count,1,
+Event,Counter,Core 3
+INSTR_RETIRED_ANY,FIXC0,528989900
+CPU_CLK_UNHALTED_CORE,FIXC1,390234500
+CPU_CLK_UNHALTED_REF,FIXC2,350857400
+MEM_LOAD_RETIRED_L3_HIT,PMC0,5822654
+MEM_LOAD_RETIRED_L3_MISS,PMC1,936302
+UOPS_RETIRED_ALL,PMC2,615409000
+TABLE,Region EG,Group 1 Metric,L3CACHE,7
+Metric,Core 3,
+Runtime (RDTSC) [s],0.1038,
+Runtime unhalted [s],0.1145,
+Clock [MHz],3790.4254,
+CPI,0.7377,
+L3 request rate,0.0110,
+L3 miss rate,0.0015,
+L3 miss ratio,0.1385,

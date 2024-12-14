@@ -28,7 +28,7 @@ run_test() {
         echo "Executando: N=$n, K=$k, Versão=$version, Métrica=$metrica"
 
         # Executar com LIKWID e salvar a saída
-        $GERA_ENTRADA $k $n | likwid-perfctr -C $CORE -g $metrica -m ./$version >$output_file
+        $GERA_ENTRADA $k $n | likwid-perfctr -C $CORE -g $metrica -m -O ./$version >$output_file
     done
 }
 

@@ -3,71 +3,57 @@ CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
 CPU type:	Intel Coffeelake processor
 CPU clock:	3.41 GHz
 --------------------------------------------------------------------------------
-6000 1.5138278831e+04 1.0215389100e+02
+6000 1.5132965166e+04 1.0414911400e+02
 --------------------------------------------------------------------------------
-Region SL, Group 1: FLOPS_DP
-+-------------------+-----------+
-|    Region Info    |   Core 3  |
-+-------------------+-----------+
-| RDTSC Runtime [s] | 15.138300 |
-|     call count    |         1 |
-+-------------------+-----------+
-
-+------------------------------------------+---------+-------------+
-|                   Event                  | Counter |    Core 3   |
-+------------------------------------------+---------+-------------+
-|             INSTR_RETIRED_ANY            |  FIXC0  | 25796260000 |
-|           CPU_CLK_UNHALTED_CORE          |  FIXC1  | 57032450000 |
-|           CPU_CLK_UNHALTED_REF           |  FIXC2  | 51283370000 |
-| FP_ARITH_INST_RETIRED_128B_PACKED_DOUBLE |   PMC0  |           0 |
-|    FP_ARITH_INST_RETIRED_SCALAR_DOUBLE   |   PMC1  | 12740450000 |
-| FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE |   PMC2  |           0 |
-+------------------------------------------+---------+-------------+
-
-+----------------------+-----------+
-|        Metric        |   Core 3  |
-+----------------------+-----------+
-|  Runtime (RDTSC) [s] |   15.1383 |
-| Runtime unhalted [s] |   16.7348 |
-|      Clock [MHz]     | 3790.0604 |
-|          CPI         |    2.2109 |
-|      DP MFLOP/s      |  841.6037 |
-|    AVX DP MFLOP/s    |         0 |
-|    Packed MUOPS/s    |         0 |
-|    Scalar MUOPS/s    |  841.6037 |
-|  Vectorization ratio |         0 |
-+----------------------+-----------+
-
-Region EG, Group 1: FLOPS_DP
-+-------------------+----------+
-|    Region Info    |  Core 3  |
-+-------------------+----------+
-| RDTSC Runtime [s] | 0.102154 |
-|     call count    |        1 |
-+-------------------+----------+
-
-+------------------------------------------+---------+-----------+
-|                   Event                  | Counter |   Core 3  |
-+------------------------------------------+---------+-----------+
-|             INSTR_RETIRED_ANY            |  FIXC0  | 446278200 |
-|           CPU_CLK_UNHALTED_CORE          |  FIXC1  | 386243400 |
-|           CPU_CLK_UNHALTED_REF           |  FIXC2  | 347217700 |
-| FP_ARITH_INST_RETIRED_128B_PACKED_DOUBLE |   PMC0  |    500500 |
-|    FP_ARITH_INST_RETIRED_SCALAR_DOUBLE   |   PMC1  |   3505019 |
-| FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE |   PMC2  | 166541500 |
-+------------------------------------------+---------+-----------+
-
-+----------------------+-----------+
-|        Metric        |   Core 3  |
-+----------------------+-----------+
-|  Runtime (RDTSC) [s] |    0.1022 |
-| Runtime unhalted [s] |    0.1133 |
-|      Clock [MHz]     | 3791.0532 |
-|          CPI         |    0.8655 |
-|      DP MFLOP/s      | 6565.2714 |
-|    AVX DP MFLOP/s    | 6521.1616 |
-|    Packed MUOPS/s    | 1635.1898 |
-|    Scalar MUOPS/s    |   34.3110 |
-|  Vectorization ratio |   97.9448 |
-+----------------------+-----------+
-
+STRUCT,Info,3
+CPU name:,Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz,
+CPU type:,Intel Coffeelake processor,
+CPU clock:,3.407911719 GHz,
+TABLE,Region SL,Group 1 Raw,FLOPS_DP,6
+Region Info,Core 3,
+RDTSC Runtime [s],15.132810,
+call count,1,
+Event,Counter,Core 3
+INSTR_RETIRED_ANY,FIXC0,25796260000
+CPU_CLK_UNHALTED_CORE,FIXC1,57037110000
+CPU_CLK_UNHALTED_REF,FIXC2,51292060000
+FP_ARITH_INST_RETIRED_128B_PACKED_DOUBLE,PMC0,0
+FP_ARITH_INST_RETIRED_SCALAR_DOUBLE,PMC1,12740450000
+FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE,PMC2,0
+TABLE,Region SL,Group 1 Metric,FLOPS_DP,9
+Metric,Core 3,
+Runtime (RDTSC) [s],15.1328,
+Runtime unhalted [s],16.7367,
+Clock [MHz],3789.6204,
+CPI,2.2111,
+DP MFLOP/s,841.9091,
+AVX DP MFLOP/s,0,
+Packed MUOPS/s,0,
+Scalar MUOPS/s,841.9091,
+Vectorization ratio,0,
+STRUCT,Info,3
+CPU name:,Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz,
+CPU type:,Intel Coffeelake processor,
+CPU clock:,3.407911719 GHz,
+TABLE,Region EG,Group 1 Raw,FLOPS_DP,6
+Region Info,Core 3,
+RDTSC Runtime [s],0.104149,
+call count,1,
+Event,Counter,Core 3
+INSTR_RETIRED_ANY,FIXC0,446278200
+CPU_CLK_UNHALTED_CORE,FIXC1,390196500
+CPU_CLK_UNHALTED_REF,FIXC2,350906000
+FP_ARITH_INST_RETIRED_128B_PACKED_DOUBLE,PMC0,500500
+FP_ARITH_INST_RETIRED_SCALAR_DOUBLE,PMC1,3505019
+FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE,PMC2,166541500
+TABLE,Region EG,Group 1 Metric,FLOPS_DP,9
+Metric,Core 3,
+Runtime (RDTSC) [s],0.1041,
+Runtime unhalted [s],0.1145,
+Clock [MHz],3789.4913,
+CPI,0.8743,
+DP MFLOP/s,6439.5744,
+AVX DP MFLOP/s,6396.3091,
+Packed MUOPS/s,1603.8829,
+Scalar MUOPS/s,33.6541,
+Vectorization ratio,97.9448,

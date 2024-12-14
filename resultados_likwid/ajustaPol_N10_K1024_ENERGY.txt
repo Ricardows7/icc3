@@ -3,83 +3,69 @@ CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
 CPU type:	Intel Coffeelake processor
 CPU clock:	3.41 GHz
 --------------------------------------------------------------------------------
-1024 2.4544619918e+00 1.2609958649e-03
+1024 2.2912800014e+00 1.1640042067e-03
 --------------------------------------------------------------------------------
-Region SL, Group 1: ENERGY
-+-------------------+----------+
-|    Region Info    |  Core 3  |
-+-------------------+----------+
-| RDTSC Runtime [s] | 0.002456 |
-|     call count    |        1 |
-+-------------------+----------+
-
-+-----------------------+---------+----------+
-|         Event         | Counter |  Core 3  |
-+-----------------------+---------+----------+
-|   INSTR_RETIRED_ANY   |  FIXC0  | 18115940 |
-| CPU_CLK_UNHALTED_CORE |  FIXC1  |  8301482 |
-|  CPU_CLK_UNHALTED_REF |  FIXC2  |  8340228 |
-|       TEMP_CORE       |   TMP0  |      199 |
-|     PWR_PKG_ENERGY    |   PWR0  |   0.0253 |
-|     PWR_PP0_ENERGY    |   PWR1  |   0.0207 |
-|     PWR_PP1_ENERGY    |   PWR2  |        0 |
-|    PWR_DRAM_ENERGY    |   PWR3  |   0.0017 |
-+-----------------------+---------+----------+
-
-+----------------------+-----------+
-|        Metric        |   Core 3  |
-+----------------------+-----------+
-|  Runtime (RDTSC) [s] |    0.0025 |
-| Runtime unhalted [s] |    0.0024 |
-|      Clock [MHz]     | 3392.1405 |
-|          CPI         |    0.4582 |
-|    Temperature [C]   |       199 |
-|      Energy [J]      |    0.0253 |
-|       Power [W]      |   10.2890 |
-|    Energy PP0 [J]    |    0.0207 |
-|     Power PP0 [W]    |    8.4250 |
-|    Energy PP1 [J]    |         0 |
-|     Power PP1 [W]    |         0 |
-|    Energy DRAM [J]   |    0.0017 |
-|    Power DRAM [W]    |    0.6959 |
-+----------------------+-----------+
-
-Region EG, Group 1: ENERGY
-+-------------------+----------+
-|    Region Info    |  Core 3  |
-+-------------------+----------+
-| RDTSC Runtime [s] | 0.000001 |
-|     call count    |        1 |
-+-------------------+----------+
-
-+-----------------------+---------+--------+
-|         Event         | Counter | Core 3 |
-+-----------------------+---------+--------+
-|   INSTR_RETIRED_ANY   |  FIXC0  |   8522 |
-| CPU_CLK_UNHALTED_CORE |  FIXC1  |  13580 |
-|  CPU_CLK_UNHALTED_REF |  FIXC2  |  13916 |
-|       TEMP_CORE       |   TMP0  |    199 |
-|     PWR_PKG_ENERGY    |   PWR0  |      0 |
-|     PWR_PP0_ENERGY    |   PWR1  | 0.0010 |
-|     PWR_PP1_ENERGY    |   PWR2  |      0 |
-|    PWR_DRAM_ENERGY    |   PWR3  |      0 |
-+-----------------------+---------+--------+
-
-+----------------------+--------------+
-|        Metric        |    Core 3    |
-+----------------------+--------------+
-|  Runtime (RDTSC) [s] | 1.400235e-06 |
-| Runtime unhalted [s] | 3.984773e-06 |
-|      Clock [MHz]     |    3325.6878 |
-|          CPI         |       1.5935 |
-|    Temperature [C]   |          199 |
-|      Energy [J]      |            0 |
-|       Power [W]      |            0 |
-|    Energy PP0 [J]    |       0.0010 |
-|     Power PP0 [W]    |     697.4276 |
-|    Energy PP1 [J]    |            0 |
-|     Power PP1 [W]    |            0 |
-|    Energy DRAM [J]   |            0 |
-|    Power DRAM [W]    |            0 |
-+----------------------+--------------+
-
+STRUCT,Info,3
+CPU name:,Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz,
+CPU type:,Intel Coffeelake processor,
+CPU clock:,3.40798245 GHz,
+TABLE,Region SL,Group 1 Raw,ENERGY,8
+Region Info,Core 3,
+RDTSC Runtime [s],0.002293,
+call count,1,
+Event,Counter,Core 3
+INSTR_RETIRED_ANY,FIXC0,18115940
+CPU_CLK_UNHALTED_CORE,FIXC1,8310958
+CPU_CLK_UNHALTED_REF,FIXC2,7674248
+TEMP_CORE,TMP0,208
+PWR_PKG_ENERGY,PWR0,0.0238
+PWR_PP0_ENERGY,PWR1,0.0268
+PWR_PP1_ENERGY,PWR2,0
+PWR_DRAM_ENERGY,PWR3,0.0011
+TABLE,Region SL,Group 1 Metric,ENERGY,13
+Metric,Core 3,
+Runtime (RDTSC) [s],0.0023,
+Runtime unhalted [s],0.0024,
+Clock [MHz],3690.7328,
+CPI,0.4588,
+Temperature [C],208,
+Energy [J],0.0238,
+Power [W],10.3826,
+Energy PP0 [J],0.0268,
+Power PP0 [W],11.6870,
+Energy PP1 [J],0,
+Power PP1 [W],0,
+Energy DRAM [J],0.0011,
+Power DRAM [W],0.4792,
+STRUCT,Info,3
+CPU name:,Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz,
+CPU type:,Intel Coffeelake processor,
+CPU clock:,3.40798245 GHz,
+TABLE,Region EG,Group 1 Raw,ENERGY,8
+Region Info,Core 3,
+RDTSC Runtime [s],0.000001,
+call count,1,
+Event,Counter,Core 3
+INSTR_RETIRED_ANY,FIXC0,8522
+CPU_CLK_UNHALTED_CORE,FIXC1,14373
+CPU_CLK_UNHALTED_REF,FIXC2,13064
+TEMP_CORE,TMP0,208
+PWR_PKG_ENERGY,PWR0,0
+PWR_PP0_ENERGY,PWR1,0.0016
+PWR_PP1_ENERGY,PWR2,0
+PWR_DRAM_ENERGY,PWR3,0
+TABLE,Region EG,Group 1 Metric,ENERGY,13
+Metric,Core 3,
+Runtime (RDTSC) [s],1.351536e-06,
+Runtime unhalted [s],4.217451e-06,
+Clock [MHz],3749.4590,
+CPI,1.6866,
+Temperature [C],208,
+Energy [J],0,
+Power [W],0,
+Energy PP0 [J],0.0016,
+Power PP0 [W],1174.1559,
+Energy PP1 [J],0,
+Power PP1 [W],0,
+Energy DRAM [J],0,
+Power DRAM [W],0,
