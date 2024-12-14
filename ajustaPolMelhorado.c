@@ -118,12 +118,12 @@ void montaSL_V2(double ** restrict A, double * restrict b, int n, long long int 
 			for (long long int k = 0; k < p; ++k){
 				aux = x[k];
 				imp[k] *= aux;	//calcula x[k] ^i + j!	
-				seta_matriz (A, imp[k], i, j, aux);	//to passando pras proximas linhas!
+				seta_matriz (A, imp[k], i, j, aux);	//ignora coluna 0 da matriz!
 			}//tem que multiplicar por maix aux aqui por causa do imp!
 		}
 	}
 
-	for (int i = n-(n%4); i < n; ++i){
+	for (int i = n-(n%4); i < n; ++i){	//resto do loop unrool
 		b[i] = 0.0;
 		for (int j = 0; j < n; j++)
 			A[i][j] = 0.0;
@@ -137,7 +137,7 @@ void montaSL_V2(double ** restrict A, double * restrict b, int n, long long int 
 			}
 		}
 	}	//ACHO QUE O PROBLEMA ESTA NO VETOR!!!
-	for (int i = 0; i < n-(n%4); i++){
+	for (int i = 0; i < n-(n%4); i++){	//faz coluna 0 da matriz
 		A[i][0] = 0.0;
 		for (long long int k = 0; k < p; k++){
 			aux = x[k];
